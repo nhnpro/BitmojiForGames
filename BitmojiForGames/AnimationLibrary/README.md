@@ -1,139 +1,380 @@
-![image alt text](image_0.png)
+<p align="center">
+<img src="image_0.png" width="450"/>
+</p>
 
-Animation Library
+# Animation Library
 
-* * *
+**Bitmoji for Games Animation Library**
 
+Copyright © 2019-2020 Snap Inc. All rights reserved. All information subject to change without notice.
 
-Document Version 1.1
+[Snap Developer Terms of Service](https://kit.snapchat.com/portal/eula?viewOnly=true)
 
-Last Published : June 22nd, 2020
-
-This Animation Library is Snap Confidential Information and is part of the Snap Materials, as those terms are defined in the Bitmoji for Games License Agreement entered into between you and Snap ("**BFG Agreement**"). Your use of the files in this Animation Library is subject to the terms of the BFG Agreement, and you cannot use the files in any manner that is not explicitly permitted under the BFG Agreement.
+[Snap Inc. Terms of Service](https://www.bitmoji.com/support/terms.html)
 
 Snap may update these file formats, names, animations, etc. which may cause compatibility issues.
 
- 
+# How to Use the Animation Library
 
-# How to Use Animation Library
+***animation previews are of the high-res (LOD 0) avatar, but only low-res (LOD3) avatar files are currently available for use***
 
-***animation previews are of high-res avatar, but only low-res avatar files are ready for use in production***
+1.  Browse the list of animations below and click "console" for high-res files, or click "mobile” for low-res files
 
-**1)**  Browse the list of animations below and click "console" for high-res files, or click "mobile” for low-res files
+1.  If satisfied with the animation download the baked animation files and use as-is.
 
-**2)**  If satisfied with the animation download the baked animation files and use as-is
+1.  If you want to modify an animation download the .ma of desired animation and make adjustments as needed.
 
-**3)**  If you want to modify an animation download the .ma of desired animation and make adjustments as needed.
+1.  Refer to the [Animation Toolset](https://github.com/Bitmoji/Bitmoji-3D/blob/master/BitmojiForGames/AnimationToolset/README.md) doc for information on how to bake animations from Maya and bring baked files into game engines.
 
-**4)**  Refer to the [Animation Toolset](https://docs.google.com/document/d/1N6QDZ453YlqbkgrpJYVQsuBbUBp0_BrdDHhv7thuSVc/edit?usp=sharing) doc for information on how to bake animations from Maya and bring baked files into game engines
+## IDLES
 
-**____________________________________________________________________________**
+<table align="center">
+    <tr>
+        <th>casual</th>
+        <th>eager</th>
+    </tr>
+    <tr>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1bhEGdINwMsvewFoV-ImlrWFTxrlBTqDT">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1boNCJPX6Jv0qRkdk6p1olrm8PktbqzH1">mobile</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="lbr_idle_casual.gif"/>
+        </td>
+        <td>
+            <img src="lbr_idle_eager.gif"/>
+        </td>
+    </tr>
+</table>
 
-**IDLES**
+## WALKS
 
-      idle casual                  idle eager
+<table align="center">
+    <tr>
+        <th>normal</th>
+        <th>double bounce</th>
+        <th>sneak</th>
+    </tr>
+    <tr>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1gnGcbkRaD_wF2-KwRzlwJBjbXe-U__HT">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1fopnVCBmyoEd2CyDMOfWXyhQ6MG9UuHC">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1goOeZH0JUTMsNbpvYLRcrcPnAT6q5DRw">mobile</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="lbr_walk_normal.gif"/>
+        </td>
+        <td>
+            <img src="lbr_walk_double_bounce.gif"/>
+        </td>
+        <td>
+            <img src="lbr_walk_sneak.gif"/>
+        </td>
+    </tr>
+</table>
 
- console      [mobile](https://drive.google.com/open?id=1bhEGdINwMsvewFoV-ImlrWFTxrlBTqDT&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1boNCJPX6Jv0qRkdk6p1olrm8PktbqzH1&authuser=dlisbe@snapchat.com&usp=drive_fs)        
+## RUNS
 
-![image alt text](image_1.gif)     ![image alt text](image_2.gif)
+<table align="center">
+    <tr>
+        <th>normal</th>
+        <th>fast</th>
+        <th>cartoony</th>
+    </tr>
+    <tr>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1edB2AXbEdvXkf9s_c2GHudj63LTv2bj_">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1eVqnrMYBPFoAe8mxr9HKQ0DAOmN35deG">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1eApDEgsdZ42keU_0d0R_VaYYnHfZqbYB">mobile</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="lbr_run_normal.gif"/>
+        </td>
+        <td>
+            <img src="lbr_run_fast.gif"/>
+        </td>
+        <td>
+            <img src="lbr_run_cartoony.gif"/>
+        </td>
+    </tr>
+</table>
 
-**____________________________________________________________________________**
+## JUMPS
 
-**WALKS**
+<table align="center">
+    <tr>
+        <th>stand</th>
+        <th>run</th>
+        <th>flip</th>
+    </tr>
+    <tr>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1dOVTzYBgAxWY9xFCUW-QndLsCR15jU68">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1dLJnn_glFELNQKycK0rEkBvk2Hdg-QAj">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1d27e87IoGWV8vxLYr8OyUrfNrFdDZhsd">mobile</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="lbr_jump_stand.gif"/>
+        </td>
+        <td>
+            <img src="lbr_jump_run.gif"/>
+        </td>
+        <td>
+            <img src="lbr_jump_flip.gif"/>
+        </td>
+    </tr>
+</table>
 
-     walk normal         walk double bounce        walk sneak
+## WINS
 
- console      [mobile](https://drive.google.com/open?id=1gnGcbkRaD_wF2-KwRzlwJBjbXe-U__HT&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1fopnVCBmyoEd2CyDMOfWXyhQ6MG9UuHC&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1goOeZH0JUTMsNbpvYLRcrcPnAT6q5DRw&authuser=dlisbe@snapchat.com&usp=drive_fs)          
+<table align="center">
+    <tr>
+        <th>jump</th>
+        <th>excited</th>
+        <th>dance</th>
+    </tr>
+    <tr>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1jhqQlhauv5tDO70xBVTo0Zu8rYN5MHeI">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1juBxVwu6Lf7mBrisbOjiUsM_JZWfBWWD">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1kVMGfP8_XA7YtCgHak2j-3YZLlQKITZh">mobile</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="lbr_win_jump.gif"/>
+        </td>
+        <td>
+            <img src="lbr_win_excited.gif"/>
+        </td>
+        <td>
+            <img src="lbr_win_dance.gif"/>
+        </td>
+    </tr>
+</table>
 
-![image alt text](image_3.gif)     ![image alt text](image_4.gif)     ![image alt text](image_5.gif)
+## LOSSES
 
-**____________________________________________________________________________**
+<table align="center">
+    <tr>
+        <th>cry</th>
+        <th>flailing</th>
+    </tr>
+    <tr>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1dmPIzoXXaYOyHbZH1iwVC0WrFj286l7D">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1e1BEZjM0pBIzhdxpupvXJ-T0zGx95llB">mobile</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="lbr_lose_cry.gif"/>
+        </td>
+        <td>
+            <img src="lbr_lose_flailing.gif"/>
+        </td>
+    </tr>
+</table>
 
-**RUNS**
+## THROWS
 
-     run normal                    run fast                   run cartoony
+<table align="center">
+    <tr>
+        <th>small</th>
+        <th>big</th>
+    </tr>
+    <tr>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1fST6SlWHWijIeWR41huNe4kGMXdtYSrc">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1f6FR_GA11wvuyb6grVvv_4xdk-jAKiL4">mobile</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="lbr_throw_small.gif"/>
+        </td>
+        <td>
+            <img src="lbr_throw_big.gif"/>
+        </td>
+    </tr>
+</table>
 
- console      [mobile](https://drive.google.com/open?id=1edB2AXbEdvXkf9s_c2GHudj63LTv2bj_&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1eVqnrMYBPFoAe8mxr9HKQ0DAOmN35deG&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile ](https://drive.google.com/open?id=1eApDEgsdZ42keU_0d0R_VaYYnHfZqbYB&authuser=dlisbe@snapchat.com&usp=drive_fs)         
+## HITS
 
-![image alt text](image_6.gif)     ![image alt text](image_7.gif)     ![image alt text](image_8.gif)
+<table align="center">
+    <tr>
+        <th>in body</th>
+        <th>in head</th>
+        <th>fall to knees</th>
+        <th>fall down</th>
+    </tr>
+    <tr>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1aRE3oQ2VONOVWFCXr4nwnHVOt3NpTBi3">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1aeXYx-hqrbtpaIIHZe7TzXqOBkUg3RvZ">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1a40dgvetXEcTff3HekRxrc5Mju5r0NoN">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1_oxcULO1Hj9qEJv4qLVfYgWdxCehfO8q">mobile</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="lbr_hit_in_body.gif"/>
+        </td>
+        <td>
+            <img src="lbr_hit_in_head.gif"/>
+        </td>
+        <td>
+            <img src="lbr_hit_fall_to_knees.gif"/>
+        </td>
+        <td>
+            <img src="lbr_hit_fall_down.gif"/>
+        </td>
+    </tr>
+</table>
 
-**____________________________________________________________________________**
+## TAUNTS
 
-**JUMPS**
-
-      jump stand                   jump run                     jump flip
-
- console      [mobile](https://drive.google.com/open?id=1dOVTzYBgAxWY9xFCUW-QndLsCR15jU68&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1dLJnn_glFELNQKycK0rEkBvk2Hdg-QAj&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1d27e87IoGWV8vxLYr8OyUrfNrFdDZhsd&authuser=dlisbe@snapchat.com&usp=drive_fs)         
-
-![image alt text](image_9.gif)     ![image alt text](image_10.gif)     ![image alt text](image_11.gif)
-
-**____________________________________________________________________________**
-
-**WINS**
-
-       win jump                   win excited                 win dance
-
- console      [mobile](https://drive.google.com/open?id=1jhqQlhauv5tDO70xBVTo0Zu8rYN5MHeI&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1juBxVwu6Lf7mBrisbOjiUsM_JZWfBWWD&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1kVMGfP8_XA7YtCgHak2j-3YZLlQKITZh&authuser=dlisbe@snapchat.com&usp=drive_fs)          
-
-![image alt text](image_12.gif)**     **![image alt text](image_13.gif)**     **![image alt text](image_14.gif)
-
-**____________________________________________________________________________**
-
-**LOSSES**
-
-        lose cry                    lose flailing
-
- console      [mobile](https://drive.google.com/open?id=1dmPIzoXXaYOyHbZH1iwVC0WrFj286l7D&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1e1BEZjM0pBIzhdxpupvXJ-T0zGx95llB&authuser=dlisbe@snapchat.com&usp=drive_fs)         
-
-![image alt text](image_15.gif)**     **![image alt text](image_16.gif)
-
-**____________________________________________________________________________**
-
-**THROWS**
-
-      throw small                 throw big
-
- console      [mobile](https://drive.google.com/open?id=1fST6SlWHWijIeWR41huNe4kGMXdtYSrc&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1f6FR_GA11wvuyb6grVvv_4xdk-jAKiL4&authuser=dlisbe@snapchat.com&usp=drive_fs)            
-
-![image alt text](image_17.gif)     ![image alt text](image_18.gif)
-
-**____________________________________________________________________________**
-
-**HITS**
-
-       hit in body                 hit in head              hit fall to knees            hit fall down
-
- console      [mobile](https://drive.google.com/open?id=1aRE3oQ2VONOVWFCXr4nwnHVOt3NpTBi3&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1aeXYx-hqrbtpaIIHZe7TzXqOBkUg3RvZ&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1a40dgvetXEcTff3HekRxrc5Mju5r0NoN&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1_oxcULO1Hj9qEJv4qLVfYgWdxCehfO8q&authuser=dlisbe@snapchat.com&usp=drive_fs)      
-
-![image alt text](image_19.gif)     ![image alt text](image_20.gif)     ![image alt text](image_21.gif)     ![image alt text](image_22.gif)
-
-**____________________________________________________________________________**
-
-**TAUNTS**
-
-taunt come at me           taunt laugh
-
- console      [mobile](https://drive.google.com/open?id=1eih4cUwQxJfabySn_HnP2RZWNQYYC43E&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1eyAs3T2mZLTcPk0mNRLHwbZItyIpT1bN&authuser=dlisbe@snapchat.com&usp=drive_fs)            
-
-![image alt text](image_23.gif)     ![image alt text](image_24.gif)
-
-**____________________________________________________________________________**
+<table align="center">
+    <tr>
+        <th>come at me</th>
+        <th>laugh</th>
+    </tr>
+    <tr>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1eih4cUwQxJfabySn_HnP2RZWNQYYC43E">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1eyAs3T2mZLTcPk0mNRLHwbZItyIpT1bN">mobile</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="lbr_taunt_come_at_me.gif"/>
+        </td>
+        <td>
+            <img src="lbr_taunt_laugh.gif"/>
+        </td>
+    </tr>
+</table>
 
 **WAITING**
 
-    wait impatient             wait sleepy
-
- console      [mobile](https://drive.google.com/open?id=1cbCrOb7d3Otm0Z7HOnZGIOb0hjmOQ8LZ&authuser=dlisbe@snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=1cjXh95uH773kNVcjZsFoZqMgL04_w5KW&authuser=dlisbe@snapchat.com&usp=drive_fs)                   
-
-![image alt text](image_25.gif)     ![image alt text](image_26.gif)     
-
-**____________________________________________________________________________**
+<table align="center">
+    <tr>
+        <th>impatient</th>
+        <th>sleepy</th>
+    </tr>
+    <tr>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1cbCrOb7d3Otm0Z7HOnZGIOb0hjmOQ8LZ">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=1cjXh95uH773kNVcjZsFoZqMgL04_w5KW">mobile</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="lbr_wait_impatient.gif"/>
+        </td>
+        <td>
+            <img src="lbr_wait_sleepy.gif"/>
+        </td>
+    </tr>
+</table>
 
 **DANCES**
 
-  dance two step            dance shuffle               dance salsa
-
- console      [mobile](https://drive.google.com/open?id=10aNrCMZ-jP72rlNzbw94C5yschtuEuHW&authuser=dlisbe%40snapchat.com&usp=drive_fs)        console      [mobile](https://drive.google.com/open?id=116lgjz8drV383c3Ua2rb8hBE0n7y3dZr&authuser=dlisbe%40snapchat.com&usp=drive_fs)         console      [mobile](https://drive.google.com/open?id=10hNAVCYDzOpcf_o6VMTasG121IrMmESw&authuser=dlisbe%40snapchat.com&usp=drive_fs)    
-
-![image alt text](image_27.gif)     ![image alt text](image_28.gif)     ![image alt text](image_29.gif)
-
+<table align="center">
+    <tr>
+        <th>two step</th>
+        <th>shuffle</th>
+        <th>salsa</th>
+    </tr>
+    <tr>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=10aNrCMZ-jP72rlNzbw94C5yschtuEuHW">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=116lgjz8drV383c3Ua2rb8hBE0n7y3dZr">mobile</a>
+        </td>
+        <td align="center">
+            console,
+            <a href="https://drive.google.com/open?id=10hNAVCYDzOpcf_o6VMTasG121IrMmESw">mobile</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="lbr_dance_two_step.gif"/>
+        </td>
+        <td>
+            <img src="lbr_dance_shuffle.gif"/>
+        </td>
+        <td>
+            <img src="lbr_dance_salsa.gif"/>
+        </td>
+    </tr>
+</table>
