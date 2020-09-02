@@ -141,7 +141,7 @@ Use the Skirt proxy to get an idea of how poses will look in skirts (the bottom 
 
 1. Bring `.fbx` and `.json` into your Unity Project.
 
-1. Make sure **MobileFacialAnim2FBX.cs** is loaded in Unity, then use **Mobile: Facial Animation Generator** to add face animation data as animation events in FBX. [(see the Add Facial Animation section of the Avatar Setup in Unity doc for more details)](TBD)
+1. Make sure **MobileFacialAnim2FBX.cs** is loaded in Unity, then use **Mobile: Facial Animation Generator** to add face animation data as animation events in FBX.
 
 1. Connect the animation to your Animator Controller, then apply it to the Animator that is added to the `AVATAR` node of the loaded glb.
 
