@@ -211,7 +211,7 @@ In order for a Snapcode to be displayed, a POST request body must be constructed
 
 POST Body
 ***
-```json
+```
 postBody = {
   "clientId": snapkit_client_id,
   "state": generated_oauth2_state,
@@ -256,7 +256,7 @@ Each of the five parameters in the POST body are required. Refer to[ https://www
 
 Scope
 ***
-```json
+```
 scopes = [
   "https://auth.snapchat.com/oauth2/api/user.display_name",
   "https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar"
@@ -271,7 +271,7 @@ The token is a [JWT token](https://jwt.io/introduction/). The following are the 
 
 Authentication Header Body
 ***
-```json
+```
 header = '{
   "alg": "ES256",
   "typ": "JWT",
@@ -437,7 +437,7 @@ Build a POST request with the header and payload (which includes the authorizati
 
 A successful response will have the following format.
 
-```json
+```
 // Success Response Body
 {
    access_token: <string>,
@@ -448,7 +448,7 @@ A successful response will have the following format.
 
 If an error occurs, an error response will be generated and returned.
 
-```json
+```
 // Error Response Body
 {
    error: <ascii error code>,
