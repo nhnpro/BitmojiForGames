@@ -1,5 +1,5 @@
 <p align="center">
-<img src="image_0.png" width="450"/>
+<img src="../Shared/Logo.png" width="450"/>
 </p>
 
 # Animation Toolset
