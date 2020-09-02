@@ -1,121 +1,150 @@
-![image alt text](image_0.png)
+<p align="center">
+<img src="image_0.png" width="450"/>
+</p>
 
-Animation Toolset 
+# Animation Toolset
 
-* * *
+**Bitmoji for Games Animation Toolset**
 
+Copyright © 2019-2020 Snap Inc. All rights reserved. All information subject to change without notice.
 
-Document Version 0.5
+[Snap Developer Terms of Service](https://kit.snapchat.com/portal/eula?viewOnly=true)
 
-Last Published : June 23rd, 2020
+[Snap Inc. Terms of Service](https://www.bitmoji.com/support/terms.html)
 
 # About this guide
 
-You’ll find information about how to use the Bitmoji low-res Mobile Rig, including some control functions and best practices.  At the bottom of this doc is a list of some files provided relating to animation,  and some basic instructions on how to get your animation from Maya into game engines.
+You’ll find information about how to use the Bitmoji low-res Mobile (LOD 3) Rig, including some control functions and best practices. At the bottom of this document is a list of some files provided relating to animation, and some basic instructions on how to get your animation from Maya into game engines.
 
 # Using the Bitmoji Mobile Rig
 
 **Changing Expressions:**
 
-1. Select the "C_head_CON" controller on the rig
+1. Select the `C_head_CON` controller on the rig
 
-2. Scroll through the "Face Shapes" attribute in the Channel Box
+1. Scroll through the "Face Shapes" attribute in the Channel Box
 
-3. Set keyframes for your animation
-
-	
-
-![image alt text](image_1.gif)
+1. Set keyframes for your animation
+<p align="center">
+<img src="image_1.gif" />
+</p>
 
 **Changing Characters:**
 
-1. Select the "C_visibility_CON" controller on the rig
+1. Select the `C_visibility_CON` controller on the rig
 
-2. Select the preferred character in the "Character" attribute found in the Channel Box
+1. Select the preferred character in the `Character` attribute found in the Channel Box
 
-![image alt text](image_2.gif)
+<p align="center">
+<img src="image_2.gif" />
+</p>
 
 **Using the Proxy Geo:**
 
-1. Select the "C_visibility_CON" controller on the rig
+1. Select the `C_visibility_CON` controller on the rig
 
-2. Adjust the "Proxy Transparency" attribute found in the Channel Box
+1. Adjust the `Proxy Transparency` attribute found in the Channel Box
 
-    1. This is a visual representation of the different volumes Bitmoji styles can include. Being aware of the proxy volume while animating will help to avoid interpenetration issues when switching different Bitmoji styles and body customizations.
+    - This is a visual representation of the different volumes Bitmoji styles can include. Being aware of the proxy volume while animating will help to avoid interpenetration issues when switching different Bitmoji styles and body customizations.
 
-![image alt text](image_3.gif)
+<p align="center">
+<img src="image_3.gif"/>
+</p>
 
 **Best Practices:**
 
-Posing around the heavy proxy will make animations compatible with all body types, with minimal interpenetrations.  If animations will be viewed from a locked camera they can be cheated to look good from that specific angle.  This can also allow "faked" contact points on the body that otherwise won’t work due to differing body sizes
+Posing around the heavy proxy will make animations compatible with all body types, with minimal interpenetrations.  If animations will be viewed from a locked camera they can be cheated to look good from that specific angle.  This can also allow "faked" contact points on the body that otherwise won’t work due to differing body sizes.
 
- POSE ON PROXY                                           CHEAT TO LOCKED CAMERA![image alt text](image_4.gif)                      ![image alt text](image_5.gif)
+<table align="center">
+<tr>
+<th>POSE ON PROXY</th>
+<th>CHEAT TO LOCKED CAMERA!</th>
+</tr>
+<tr>
+<td>
+    <img src="image_4.gif" width="400"/>
+</td>
+<td>
+    <img src="image_5.gif" width="400"/>
+</td>
+</tr>
+</table>
 
 **Using the Skirt Proxy:**
 
-1. Select the "C_visibility_CON" controller on the rig
+1. Select the `C_visibility_CON` controller on the rig
 
-2. Turn the skirt proxy off/on with the Skirt attribute found in the Channel Box
+1. Turn the skirt proxy off/on with the Skirt attribute found in the Channel Box
 
-    1. This is a visual representation of a skirt that a player’s Bitmoji could be wearing.  Skirts are closed on the bottom so nothing can be seen underneath, but using this proxy can show what animations could look like in skirts or dresses.
+    - This is a visual representation of a skirt that a player’s Bitmoji could be wearing.  Skirts are closed on the bottom so nothing can be seen underneath, but using this proxy can show what animations could look like in skirts or dresses.
 
-![image alt text](image_6.gif)
+<p align="center">
+<img src="image_6.gif"/>
+</p>
 
 **Best Practices:**
 
 Use the Skirt proxy to get an idea of how poses will look in skirts (the bottom of all avatar skirts are closed off).  Briefly seeing the underside of the skirt is fine, but avoid prolonged views/poses when possible.
 
- FINE                                                                                   AVOID                       ![image alt text](image_7.gif)              ![image alt text](image_8.gif)
+<table align="center">
+<tr>
+<th>FINE</th>
+<th>AVOID</th>
+</tr>
+<tr>
+<td>
+    <img src="image_7.gif" width="400"/>
+</td>
+<td>
+    <img src="image_8.gif" width="400"/>
+</td>
+</tr>
+</table>
 
 # Files Provided
 
 **avatar**
 
--snap_mobile_rig.ma 
+- snap_mobile_rig.ma 
 
--snap_mobile_bind_skeleton_v01.fbx
+- snap_mobile_bind_skeleton_v01.fbx
 
 **scripts for Maya**
 
--mobile_bake.py 
+- mobile_bake.py 
 
 **scripts for Unity**
 
--MobileGLBLoader.cs
+- MobileGLBLoader.cs
 
--MobileFacialAnimationEvent.cs
+- MobileFacialAnimationEvent.cs
 
--MobileFacialAnim2FBX.cs
+- MobileFacialAnim2FBX.cs
 
--GLTFUtility-master.zip
+- GLTFUtility-master.zip
 
--Newtonsoft.Json-for-Unity-master.zip
+- Newtonsoft.Json-for-Unity-master.zip
 
 **converters**
 
--FBX2glTF-windows-x64.exe
+- FBX2glTF-windows-x64.exe
 
--FBX2glTF-darwin-x64
+- FBX2glTF-darwin-x64
 
 # Mobile Rig Animation into Unity
 
-**1)  **Use latest **snap_mobile_rig.ma**​ for animation in Maya.  Or use our **snap_mobile_bind_skeleton.fbx** for custom rigging (but following scripts may not be compatible)
+1. Use the latest **snap_mobile_rig.ma**​ for animation in Maya.  Or use our **snap_mobile_bind_skeleton.fbx** for custom rigging (but the following scripts may not be compatible)
 
-**2) ** Create animation for body and face
+1. Create animation for body and face
 
-**3)**  In Maya run the **mobile_bake.py** script to bake the animation and export an .fbx with body animation and a .json with face texture animation data.  After the baking process some group nodes will be deleted but the joint hierarchy will stay the same
+1. In Maya run the **mobile_bake.py** script to bake the animation and export an `.fbx` with body animation and a `.json` with face texture animation data. After the baking process some group nodes will be deleted but the joint hierarchy will stay the same.
 
-**4)  **Bring .fbx and .json into your Unity Project
+1. Bring `.fbx` and `.json` into your Unity Project.
 
-**5)  **Make sure "**MobileFacialAnim2FBX.cs**" is loaded in Unity, then use “**Mobile: Facial Animation Generator**” to add face animation data as animation events in fbx. [(go to Add Facial Animation section of the Avatar Setup in Unity doc for more details)](https://docs.google.com/document/d/1BcUCn2HWBcxOG-wtaF9on-INb-v4GDdTSoUv0X4cGfQ/edit#)
+1. Make sure **MobileFacialAnim2FBX.cs** is loaded in Unity, then use **Mobile: Facial Animation Generator** to add face animation data as animation events in FBX. [(see the Add Facial Animation section of the Avatar Setup in Unity doc for more details)](TBD)
 
-**6)**  Connect the animation to your Animator Controller, then apply it to the Animator that is added to the "AVATAR" node of the loaded glb
-
-# ______________________________________________
+1. Connect the animation to your Animator Controller, then apply it to the Animator that is added to the `AVATAR` node of the loaded glb.
 
 # Providing Feedback			
 
 We would love to hear your thoughts on our product! Please visit this form so that you can submit your suggestions and let us know how we can better improve your Bitmoji Gaming Experience! [Feedback Form](https://forms.gle/48xjwZPUazYGrBZu5) 
-
-	
-
