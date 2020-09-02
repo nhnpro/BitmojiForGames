@@ -1,27 +1,25 @@
-![image alt text](image_0.png)
+<p align="center">
+<img src="../Shared/Logo.png" width="450"/>
+</p>
 
-Usage Guidelines
+# Usage Guidelines
 
-* * *
+**Bitmoji for Games Usage Guidelines**
 
-
-Version 3.0
-
-June 17th, 2020
-
-Bitmoji for Games Usage Guidelines
-
-Copyright © 2020 Snap Inc. All rights reserved. 
-
-Snap Inc. confidential information. Do not share.
-
-This document contains Snap Inc. confidential information and intellectual property and is meant for its intended recipient(s) only. No part of this document may be disclosed or reproduced in any form without express permission from Snap Inc. All information subject to change without notice.
+Copyright © 2020 Snap Inc. All rights reserved. All information subject to change without notice.
 
 [Snap Developer Terms of Service](https://kit.snapchat.com/portal/eula?viewOnly=true)
 
 [Snap Inc. Terms of Service](https://www.bitmoji.com/support/terms.html)
 
-[[TOC]]
+
+# Table of contents
+
+1. [About this guide](#about-this-guide)
+1. [Audience](#audience)
+1. [Bitmoji Asset Usage](#bitmoji-asset-usage)
+1. [Designing Your Apps and Marketing Materials](#designing-your-apps-and-marketing-materials)
+1. [App and Game Content](#app-and-game-content)
 
 # About this Guide
 
