@@ -26,7 +26,7 @@ You’ll find information about how to use the Bitmoji low-res Mobile (LOD 3) Ri
 
 1. Set keyframes for your animation
 <p align="center">
-<img src="lod3_v06_face.gif" />
+<img src="images/lod3_v06_face.gif" />
 </p>
 
 **Changing Characters:**
@@ -36,7 +36,7 @@ You’ll find information about how to use the Bitmoji low-res Mobile (LOD 3) Ri
 1. Select the preferred character in the `Character` attribute found in the Channel Box
 
 <p align="center">
-<img src="lod3_v06_character_swap.gif" />
+<img src="images/lod3_v06_character_swap.gif" />
 </p>
 
 **Using the Proxy Geo:**
@@ -48,7 +48,7 @@ You’ll find information about how to use the Bitmoji low-res Mobile (LOD 3) Ri
     - This is a visual representation of the different volumes Bitmoji styles can include. Being aware of the proxy volume while animating will help to avoid interpenetration issues when switching different Bitmoji styles and body customizations.
 
 <p align="center">
-<img src="lod3_v06_proxy_on_off.gif"/>
+<img src="images/lod3_v06_proxy_on_off.gif"/>
 </p>
 
 **Best Practices:**
@@ -62,10 +62,10 @@ Posing around the heavy proxy will make animations compatible with all body type
     </tr>
     <tr>
         <td>
-            <img src="lod3_v06_proxy_posing.gif" width="400"/>
+            <img src="images/lod3_v06_proxy_posing.gif" width="400"/>
         </td>
         <td>
-            <img src="lod3_v06_proxy_cheating.gif" width="400"/>
+            <img src="images/lod3_v06_proxy_cheating.gif" width="400"/>
         </td>
     </tr>
 </table>
@@ -79,7 +79,7 @@ Posing around the heavy proxy will make animations compatible with all body type
     - This is a visual representation of a skirt that a player’s Bitmoji could be wearing.  Skirts are closed on the bottom so nothing can be seen underneath, but using this proxy can show what animations could look like in skirts or dresses.
 
 <p align="center">
-<img src="lod3_v06_skirt_on_off.gif"/>
+<img src="images/lod3_v06_skirt_on_off.gif"/>
 </p>
 
 **Best Practices:**
@@ -93,10 +93,10 @@ Use the Skirt proxy to get an idea of how poses will look in skirts (the bottom 
     </tr>
     <tr>
         <td>
-            <img src="lod3_v06_skirt_fine.gif" width="400"/>
+            <img src="images/lod3_v06_skirt_fine.gif" width="400"/>
         </td>
         <td>
-            <img src="lod3_v06_skirt_avoid.gif" width="400"/>
+            <img src="images/lod3_v06_skirt_avoid.gif" width="400"/>
         </td>
     </tr>
 </table>

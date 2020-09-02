@@ -45,10 +45,10 @@ Snap may update these file formats, names, animations, etc. which may cause comp
     </tr>
     <tr>
         <td>
-            <img src="lbr_idle_casual.gif"/>
+            <img src="images/lbr_idle_casual.gif"/>
         </td>
         <td>
-            <img src="lbr_idle_eager.gif"/>
+            <img src="images/lbr_idle_eager.gif"/>
         </td>
     </tr>
 </table>
@@ -77,13 +77,13 @@ Snap may update these file formats, names, animations, etc. which may cause comp
     </tr>
     <tr>
         <td>
-            <img src="lbr_walk_normal.gif"/>
+            <img src="images/lbr_walk_normal.gif"/>
         </td>
         <td>
-            <img src="lbr_walk_double_bounce.gif"/>
+            <img src="images/lbr_walk_double_bounce.gif"/>
         </td>
         <td>
-            <img src="lbr_walk_sneak.gif"/>
+            <img src="images/lbr_walk_sneak.gif"/>
         </td>
     </tr>
 </table>
@@ -112,13 +112,13 @@ Snap may update these file formats, names, animations, etc. which may cause comp
     </tr>
     <tr>
         <td>
-            <img src="lbr_run_normal.gif"/>
+            <img src="images/lbr_run_normal.gif"/>
         </td>
         <td>
-            <img src="lbr_run_fast.gif"/>
+            <img src="images/lbr_run_fast.gif"/>
         </td>
         <td>
-            <img src="lbr_run_cartoony.gif"/>
+            <img src="images/lbr_run_cartoony.gif"/>
         </td>
     </tr>
 </table>
@@ -147,13 +147,13 @@ Snap may update these file formats, names, animations, etc. which may cause comp
     </tr>
     <tr>
         <td>
-            <img src="lbr_jump_stand.gif"/>
+            <img src="images/lbr_jump_stand.gif"/>
         </td>
         <td>
-            <img src="lbr_jump_run.gif"/>
+            <img src="images/lbr_jump_run.gif"/>
         </td>
         <td>
-            <img src="lbr_jump_flip.gif"/>
+            <img src="images/lbr_jump_flip.gif"/>
         </td>
     </tr>
 </table>
@@ -182,13 +182,13 @@ Snap may update these file formats, names, animations, etc. which may cause comp
     </tr>
     <tr>
         <td>
-            <img src="lbr_win_jump.gif"/>
+            <img src="images/lbr_win_jump.gif"/>
         </td>
         <td>
-            <img src="lbr_win_excited.gif"/>
+            <img src="images/lbr_win_excited.gif"/>
         </td>
         <td>
-            <img src="lbr_win_dance.gif"/>
+            <img src="images/lbr_win_dance.gif"/>
         </td>
     </tr>
 </table>
@@ -212,10 +212,10 @@ Snap may update these file formats, names, animations, etc. which may cause comp
     </tr>
     <tr>
         <td>
-            <img src="lbr_lose_cry.gif"/>
+            <img src="images/lbr_lose_cry.gif"/>
         </td>
         <td>
-            <img src="lbr_lose_flailing.gif"/>
+            <img src="images/lbr_lose_flailing.gif"/>
         </td>
     </tr>
 </table>
@@ -239,10 +239,10 @@ Snap may update these file formats, names, animations, etc. which may cause comp
     </tr>
     <tr>
         <td>
-            <img src="lbr_throw_small.gif"/>
+            <img src="images/lbr_throw_small.gif"/>
         </td>
         <td>
-            <img src="lbr_throw_big.gif"/>
+            <img src="images/lbr_throw_big.gif"/>
         </td>
     </tr>
 </table>
@@ -276,16 +276,16 @@ Snap may update these file formats, names, animations, etc. which may cause comp
     </tr>
     <tr>
         <td>
-            <img src="lbr_hit_in_body.gif"/>
+            <img src="images/lbr_hit_in_body.gif"/>
         </td>
         <td>
-            <img src="lbr_hit_in_head.gif"/>
+            <img src="images/lbr_hit_in_head.gif"/>
         </td>
         <td>
-            <img src="lbr_hit_fall_to_knees.gif"/>
+            <img src="images/lbr_hit_fall_to_knees.gif"/>
         </td>
         <td>
-            <img src="lbr_hit_fall_down.gif"/>
+            <img src="images/lbr_hit_fall_down.gif"/>
         </td>
     </tr>
 </table>
@@ -309,10 +309,10 @@ Snap may update these file formats, names, animations, etc. which may cause comp
     </tr>
     <tr>
         <td>
-            <img src="lbr_taunt_come_at_me.gif"/>
+            <img src="images/lbr_taunt_come_at_me.gif"/>
         </td>
         <td>
-            <img src="lbr_taunt_laugh.gif"/>
+            <img src="images/lbr_taunt_laugh.gif"/>
         </td>
     </tr>
 </table>
@@ -336,10 +336,10 @@ Snap may update these file formats, names, animations, etc. which may cause comp
     </tr>
     <tr>
         <td>
-            <img src="lbr_wait_impatient.gif"/>
+            <img src="images/lbr_wait_impatient.gif"/>
         </td>
         <td>
-            <img src="lbr_wait_sleepy.gif"/>
+            <img src="images/lbr_wait_sleepy.gif"/>
         </td>
     </tr>
 </table>
@@ -368,13 +368,13 @@ Snap may update these file formats, names, animations, etc. which may cause comp
     </tr>
     <tr>
         <td>
-            <img src="lbr_dance_two_step.gif"/>
+            <img src="images/lbr_dance_two_step.gif"/>
         </td>
         <td>
-            <img src="lbr_dance_shuffle.gif"/>
+            <img src="images/lbr_dance_shuffle.gif"/>
         </td>
         <td>
-            <img src="lbr_dance_salsa.gif"/>
+            <img src="images/lbr_dance_salsa.gif"/>
         </td>
     </tr>
 </table>
