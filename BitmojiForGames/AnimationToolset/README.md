@@ -26,7 +26,7 @@ You’ll find information about how to use the Bitmoji low-res Mobile (LOD 3) Ri
 
 1. Set keyframes for your animation
 <p align="center">
-<img src="image_1.gif" />
+<img src="lod3_v06_face.gif" />
 </p>
 
 **Changing Characters:**
@@ -36,7 +36,7 @@ You’ll find information about how to use the Bitmoji low-res Mobile (LOD 3) Ri
 1. Select the preferred character in the `Character` attribute found in the Channel Box
 
 <p align="center">
-<img src="image_2.gif" />
+<img src="lod3_v06_character_swap.gif" />
 </p>
 
 **Using the Proxy Geo:**
@@ -48,7 +48,7 @@ You’ll find information about how to use the Bitmoji low-res Mobile (LOD 3) Ri
     - This is a visual representation of the different volumes Bitmoji styles can include. Being aware of the proxy volume while animating will help to avoid interpenetration issues when switching different Bitmoji styles and body customizations.
 
 <p align="center">
-<img src="image_3.gif"/>
+<img src="lod3_v06_proxy_on_off.gif"/>
 </p>
 
 **Best Practices:**
@@ -56,18 +56,18 @@ You’ll find information about how to use the Bitmoji low-res Mobile (LOD 3) Ri
 Posing around the heavy proxy will make animations compatible with all body types, with minimal interpenetrations.  If animations will be viewed from a locked camera they can be cheated to look good from that specific angle.  This can also allow "faked" contact points on the body that otherwise won’t work due to differing body sizes.
 
 <table align="center">
-<tr>
-<th>POSE ON PROXY</th>
-<th>CHEAT TO LOCKED CAMERA!</th>
-</tr>
-<tr>
-<td>
-    <img src="image_4.gif" width="400"/>
-</td>
-<td>
-    <img src="image_5.gif" width="400"/>
-</td>
-</tr>
+    <tr>
+        <th>POSE ON PROXY</th>
+        <th>CHEAT TO LOCKED CAMERA!</th>
+    </tr>
+    <tr>
+        <td>
+            <img src="lod3_v06_proxy_posing.gif" width="400"/>
+        </td>
+        <td>
+            <img src="lod3_v06_proxy_cheating.gif" width="400"/>
+        </td>
+    </tr>
 </table>
 
 **Using the Skirt Proxy:**
@@ -79,7 +79,7 @@ Posing around the heavy proxy will make animations compatible with all body type
     - This is a visual representation of a skirt that a player’s Bitmoji could be wearing.  Skirts are closed on the bottom so nothing can be seen underneath, but using this proxy can show what animations could look like in skirts or dresses.
 
 <p align="center">
-<img src="image_6.gif"/>
+<img src="lod3_v06_skirt_on_off.gif"/>
 </p>
 
 **Best Practices:**
@@ -87,18 +87,18 @@ Posing around the heavy proxy will make animations compatible with all body type
 Use the Skirt proxy to get an idea of how poses will look in skirts (the bottom of all avatar skirts are closed off).  Briefly seeing the underside of the skirt is fine, but avoid prolonged views/poses when possible.
 
 <table align="center">
-<tr>
-<th>FINE</th>
-<th>AVOID</th>
-</tr>
-<tr>
-<td>
-    <img src="image_7.gif" width="400"/>
-</td>
-<td>
-    <img src="image_8.gif" width="400"/>
-</td>
-</tr>
+    <tr>
+        <th>FINE</th>
+        <th>AVOID</th>
+    </tr>
+    <tr>
+        <td>
+            <img src="lod3_v06_skirt_fine.gif" width="400"/>
+        </td>
+        <td>
+            <img src="lod3_v06_skirt_avoid.gif" width="400"/>
+        </td>
+    </tr>
 </table>
 
 # Files Provided
