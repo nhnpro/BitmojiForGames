@@ -16,7 +16,7 @@ Snap may update these file formats, names, animations, etc. which may cause comp
 
 # How to Use the Animation Library
 
-***animation previews are of the high-res (LOD 0) avatar, but only low-res (LOD3) avatar files are currently available for use***
+***animation previews are of the high-res (LOD 0) avatar, but low-res (LOD3) avatar files are also available for use***
 
 1.  Browse the list of animations below and click "console" for high-res files, or click "mobile” for low-res files
 
