@@ -14,11 +14,11 @@ Copyright © 2019-2020 Snap Inc. All rights reserved. All information subject to
 
 # About this guide
 
-You’ll find information about how to use the Bitmoji low-res Mobile (LOD 3) Rig, including some control functions and best practices. At the bottom of this document is a list of some files provided relating to animation, and some basic instructions on how to get your animation from Maya into game engines.
+You’ll find information about how to use the Bitmoji low-res Mobile Rig & hi-res Console Rig, including some control functions and best practices. At the bottom of this document is a list of some files provided relating to animation, and some basic instructions on how to get your animation from Maya into game engines.
 
-# Using the Bitmoji Mobile Rig
+# Using the Bitmoji Rig
 
-**Changing Expressions:**
+**Changing Expressions in Mobile Rig:**
 
 1. Select the `C_head_CON` controller on the rig
 
@@ -29,7 +29,20 @@ You’ll find information about how to use the Bitmoji low-res Mobile (LOD 3) Ri
 <img src="images/lod3_v06_face.gif" />
 </p>
 
-**Changing Characters:**
+**Face Controls in Console Rig:**
+
+1. The face rig has a user-friendly setup, with mostly intuitive functions
+
+1. The triangles on the left/right side of the mouth can round off or pinch the mouth corners
+
+1. The big, yellow oval has an option in the channel box to turn on/off teeth and tongue controls
+
+<p align="center">
+<img src="images/lod0_face.gif" />
+</p>
+
+
+**Changing Characters in Mobile Rig:**
 
 1. Select the `C_visibility_CON` controller on the rig
 
@@ -47,9 +60,17 @@ You’ll find information about how to use the Bitmoji low-res Mobile (LOD 3) Ri
 
     - This is a visual representation of the different volumes Bitmoji styles can include. Being aware of the proxy volume while animating will help to avoid interpenetration issues when switching different Bitmoji styles and body customizations.
 
-<p align="center">
-<img src="images/lod3_v06_proxy_on_off.gif"/>
-</p>
+<table align="center">
+    <tr>
+        <td>
+            <img src="images/lod3_v06_proxy_on_off.gif" width="400"/>
+        </td>
+        <td>
+            <img src="images/lod0_proxy.gif" width="400"/>
+        </td>
+    </tr>
+</table>
+
 
 **Best Practices:**
 
@@ -78,9 +99,16 @@ Posing around the heavy proxy will make animations compatible with all body type
 
     - This is a visual representation of a skirt that a player’s Bitmoji could be wearing.  Skirts are closed on the bottom so nothing can be seen underneath, but using this proxy can show what animations could look like in skirts or dresses.
 
-<p align="center">
-<img src="images/lod3_v06_skirt_on_off.gif"/>
-</p>
+<table align="center">
+    <tr>
+        <td>
+            <img src="images/lod3_v06_skirt_on_off.gif" width="400"/>
+        </td>
+        <td>
+            <img src="images/lod0_skirt.gif" width="400"/>
+        </td>
+    </tr>
+</table>
 
 **Best Practices:**
 
@@ -105,21 +133,27 @@ Use the Skirt proxy to get an idea of how poses will look in skirts (the bottom 
 
 **avatar**
 
-- snap_mobile_rig.ma 
+- snap_mobile_rig.ma
 
-- snap_mobile_bind_skeleton_v01.fbx
+- snap_console_rig.ma
+
+- snap_console_bind_skeleton.fbx
+
+- snap_mobile_bind_skeleton.fbx
 
 **scripts for Maya**
 
-- mobile_bake.py 
+- snap_bake.py 
 
 **scripts for Unity**
 
-- MobileGLBLoader.cs
+- GLBLoader.cs
 
 - MobileFacialAnimationEvent.cs
 
-- MobileFacialAnim2FBX.cs
+- FacialAnimConverter.cs
+
+**third party scripts for Unity**
 
 - GLTFUtility-master.zip
 
@@ -131,17 +165,17 @@ Use the Skirt proxy to get an idea of how poses will look in skirts (the bottom 
 
 - FBX2glTF-darwin-x64
 
-# Mobile Rig Animation into Unity
+# Bitmoji Rig Animation into Unity
 
-1. Use the latest **snap_mobile_rig.ma**​ for animation in Maya.  Or use our **snap_mobile_bind_skeleton.fbx** for custom rigging (but the following scripts may not be compatible)
+1. Use the latest **snap_mobile_rig.ma**​ or **snap_console_rig.ma** for animation in Maya.  Or use our **snap_mobile_bind_skeleton.fbx** or **snap_console_bind_skeleton.fbx** for custom rigging (but the following scripts may not be compatible)
 
 1. Create animation for body and face
 
-1. In Maya run the **mobile_bake.py** script to bake the animation and export an `.fbx` with body animation and a `.json` with face texture animation data. After the baking process some group nodes will be deleted but the joint hierarchy will stay the same.
+1. In Maya run the **snap_bake.py** script to bake the animation and export an `.fbx` with body animation and a `.json` with face animation data. After the baking process some group nodes will be deleted but the joint hierarchy will stay the same.
 
 1. Bring `.fbx` and `.json` into your Unity Project.
 
-1. Make sure **MobileFacialAnim2FBX.cs** is loaded in Unity, then use **Mobile: Facial Animation Generator** to add face animation data as animation events in FBX.
+1. Make sure **FacialAnimConverter.cs** is loaded in Unity, then use **Bitmoji For Games: Facial Animation Converter** to add face animation data. (Go to **Add Facial Animation** section of [Avatar Setup in Unity](https://github.com/Bitmoji/Bitmoji-3D/) doc for more details)
 
 1. Connect the animation to your Animator Controller, then apply it to the Animator that is added to the `AVATAR` node of the loaded glb.
 
