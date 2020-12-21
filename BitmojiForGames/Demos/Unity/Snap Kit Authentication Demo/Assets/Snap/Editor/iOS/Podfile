@@ -1,0 +1,5 @@
+platform :ios, '11.0'
+
+target 'UnityFramework' do
+	pod 'SnapSDK', '1.6.8', :subspecs => ['SCSDKLoginKit', 'SCSDKCreativeKit']
+end

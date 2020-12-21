@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07fe8621b3da043d7942708007a4ffa9, type: 3}
+  m_Name: SnapKitSettings
+  m_EditorClassIdentifier: Snap.Editor::SnapKitIosSetting
+  iOSUrlSceme: unitytest
+  iOSClientId: 'dcad1609-015f-4e1f-8b22-6da513dd3ff2 '
+  iOSRedirectUrl: unitytest://snap-kit/oauth2
+  iOSScopes:
+  - https://auth.snapchat.com/oauth2/api/user.display_name
+  - https://auth.snapchat.com/oauth2/api/user.external_id
+  - https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar
+  AndroidClientId: 'dcad1609-015f-4e1f-8b22-6da513dd3ff2 '
+  AndroidRedirectUrl: unitytest://snap-kit/oauth2
+  AndroidSnapScheme: unitytest
+  AndroidSnapHost: snap-kit
+  AndroidSnapPathPrefix: /oauth2
+  AndroidScopes:
+  - https://auth.snapchat.com/oauth2/api/user.display_name
+  - https://auth.snapchat.com/oauth2/api/user.external_id
+  - https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar
