@@ -8,22 +8,18 @@ using System.Net.Security;
 using System.IO;
 using System.Net.Http.Headers;
 using UnityEngine.UI;
-using Siccity.GLTFUtility;
+using Bitmoji.GLTFUtility;
+using Bitmoji;
 
 public class BitmojiLoader : MonoBehaviour
 {
-    public GameObject Bitmoji;
+    public GameObject BitmojiAvatar;
     public SnapKitHandler Snapkit;
     public Text DebugText;
-    public Animator Animation;
+    public Animation Animation;
 
-    private const string avatarPath = "/RootNode/AVATAR";
     private const string LOCAL_BITMOJI = "Models/NpcBitmoji.glb";
-    private const string GHOST_AVATAR_PATH = "https://bitmoji.api.snapchat.com/bitmoji-for-games/default_avatar?lod=3";
-    private const string NPC_AVATAR_PATH = "https://bitmoji.api.snapchat.com/bitmoji-for-games/test_avatar?lod=3";
-    private const string AUTHENTICATED_AVATAR_PATH = "https://bitmoji.api.snapchat.com/bitmoji-for-games/model?avatar_id={0}&lod=3";
-
-    // TODO: Add animation
+    private const string LOCAL_DANCE_ANIMATION = "Animations/2284cb1f-4c57-49a2-a298-afce7e848032_default_LOD3.glb";
 
     private void OnEnable()
     {
@@ -40,25 +36,27 @@ public class BitmojiLoader : MonoBehaviour
     {
         try
         {
-            var npcBitmoji = await DownloadBitmoji(GHOST_AVATAR_PATH, "ghostBitmoji.glb");
+            GameObject npcBitmoji = await Bitmoji.BitmojiForGames.Assets.AddDefaultAvatarToScene(Bitmoji.BitmojiForGames.Assets.LevelOfDetail.LOD3, null);
             DebugText.text = "Downloaded placeholder (ghost) Bitmoji successfully. Login with Snapchat to see your Bitmoji";
-            ReplaceBitmoji(npcBitmoji, false, false);
+            ReplaceBitmoji(npcBitmoji, false);
         }
         catch (Exception ex)
         {
             DebugText.text = "Couldn't download NPC Bitmoji, using local fallback";
             Debug.Log("Error downloading NPC Bitmoji \n " + ex.Message);
-            ReplaceBitmoji(LOCAL_BITMOJI, true, false);
+            GameObject fallbackAvatar = Bitmoji.BitmojiForGames.Assets.AddAvatarToSceneFromFile(Path.Combine(Application.streamingAssetsPath, LOCAL_BITMOJI), Bitmoji.BitmojiForGames.Assets.LevelOfDetail.LOD3);
+            ReplaceBitmoji(fallbackAvatar, false);
         }
 
     }
 
-    public void OnButtonTap_Login()
+    public async void OnButtonTap_Login()
     {
         if (Application.isEditor)
         {
-            DebugText.text = "Using fallback Bitmoji. Build to a mobile device to use the LoginKit flow";
-            ReplaceBitmoji(LOCAL_BITMOJI, true, true);
+            DebugText.text = "Using test Bitmoji. Build to a mobile device to use the LoginKit flow";
+            GameObject testAvatar = await Bitmoji.BitmojiForGames.Assets.AddTestAvatarToScene(Bitmoji.BitmojiForGames.Assets.LevelOfDetail.LOD3);
+            ReplaceBitmoji(testAvatar, true);
         }
         else
         {
@@ -69,90 +67,29 @@ public class BitmojiLoader : MonoBehaviour
     /***
      * Replaces the current Bitmoji in the scene with a new one
      */
-    private void ReplaceBitmoji(string localGlbPath, bool relativeUrl, bool doTheDance)
+    private void ReplaceBitmoji(GameObject avatarObject, bool doTheDance)
     {
         // Clear children
         var children = new List<GameObject>();
-        foreach (Transform child in Bitmoji.transform)
+        foreach (Transform child in BitmojiAvatar.transform)
         {
             children.Add(child.gameObject);
         }
         children.ForEach(child => Destroy(child));
 
-        // Load new model
-        var url = localGlbPath;
-        if (relativeUrl)
-        {
-            url = Path.Combine(Application.streamingAssetsPath, url);
-        }
-        var resultGO = Importer.LoadFromFile(url);
-
         // Set animation
         if (doTheDance)
         {
-            var avatar = resultGO.transform.Find(avatarPath);
-            var animator = avatar.gameObject.AddComponent<Animator>();
-            animator.runtimeAnimatorController = Animation.runtimeAnimatorController;
-            MobileFacialAnimationEvent.glb_Object = url;
-            MobileFacialAnimationEvent.head_path = "C_head_GEO";
-            avatar.gameObject.AddComponent<MobileFacialAnimationEvent>();
-        }        
+            Animation animation = avatarObject.AddComponent<Animation>();
+            AnimationClip danceAnimation = Bitmoji.BitmojiForGames.Assets.AddAnimationClipFromFile(Path.Combine(Application.streamingAssetsPath, LOCAL_DANCE_ANIMATION), Bitmoji.BitmojiForGames.Assets.LevelOfDetail.LOD3, true);
+            danceAnimation.wrapMode = WrapMode.Loop;
+            animation.AddClip(danceAnimation, danceAnimation.name);
+            animation.CrossFade(danceAnimation.name);
+        }
 
         // Set parent
-        resultGO.transform.parent = Bitmoji.transform;
-        resultGO.transform.localRotation = Quaternion.identity;
-
-        // Nit: remove shadows (looks nicer)
-        var meshes = resultGO.GetComponentsInChildren<SkinnedMeshRenderer>();
-        foreach (var mesh in meshes)
-        {
-            mesh.receiveShadows = false;
-        }
-
-    }
-
-    /***
-     * Downloads a Bitmoji and saves to a file in temporaryCachePath
-     */
-    private async Task<string> DownloadBitmoji(string uri, string destinationFileName, string accessToken = null)
-    {
-        DebugText.text = "Attempting to download Bitmoji...";
-
-        var destFile = new FileInfo(Path.Combine(Application.temporaryCachePath, destinationFileName));
-
-        // Automatically deflate Gzip response
-        var handler = new HttpClientHandler();
-        handler.AutomaticDecompression = System.Net.DecompressionMethods.Deflate | System.Net.DecompressionMethods.GZip;
-
-        // Create request
-        var httpClient = new HttpClient(handler);
-        if (accessToken != null)
-        {
-            // For the Test and NPC Bitmoji, no authentication is required.
-            // But a LoginKit Access Token is required to retrieve the user's Bitmoji
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-        }
-
-        Debug.Log($"AvatarId {Snapkit.AvatarId} \nAccess Token {Snapkit.AccessToken} \nURL:{uri}");
-
-
-        // Send Request and save it to a temp file
-        var response = await httpClient.GetAsync(uri);
-        response.EnsureSuccessStatusCode();
-        using (var ms = await response.Content.ReadAsStreamAsync())
-        {
-            using (var fs = File.Create(destFile.FullName))
-            {
-                ms.Seek(0, SeekOrigin.Begin);
-                ms.CopyTo(fs);
-            }
-        }
-
-        // Success!
-        DebugText.text = "Bitmoji downloaded successfully!";
-        Debug.Log($"Downloaded Bitmoji! \n to {destFile} \n from {uri}");
-
-        return destFile.FullName;
+        avatarObject.transform.parent = BitmojiAvatar.transform;
+        avatarObject.transform.localRotation = Quaternion.identity;
     }
 
     /**
@@ -170,10 +107,9 @@ public class BitmojiLoader : MonoBehaviour
      */
     private async Task FetchAuthenticatedBitmoji()
     {
-        var uri = String.Format(AUTHENTICATED_AVATAR_PATH, Snapkit.AvatarId);
-        var bitmoji = await DownloadBitmoji(uri, "authenticatedBitmoji.glb", Snapkit.AccessToken);
+        GameObject bitmoji = await Bitmoji.BitmojiForGames.Assets.AddAvatarToScene(Snapkit.AvatarId, Bitmoji.BitmojiForGames.Assets.LevelOfDetail.LOD3, Snapkit.AccessToken);
         DebugText.text = "3D Bitmoji downloaded successfully.";
-        ReplaceBitmoji(bitmoji, false, true);
+        ReplaceBitmoji(bitmoji, true);
     }
 
 }

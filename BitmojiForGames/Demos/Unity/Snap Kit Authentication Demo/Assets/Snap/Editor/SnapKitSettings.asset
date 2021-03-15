@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: SnapKitSettings
   m_EditorClassIdentifier: Snap.Editor::SnapKitIosSetting
   iOSUrlSceme: unitytest
-  iOSClientId: 'dcad1609-015f-4e1f-8b22-6da513dd3ff2 '
+  iOSClientId: e677e0dd-4b5c-47de-9718-4fde483d1cdb
   iOSRedirectUrl: unitytest://snap-kit/oauth2
   iOSScopes:
   - https://auth.snapchat.com/oauth2/api/user.display_name
   - https://auth.snapchat.com/oauth2/api/user.external_id
   - https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar
-  AndroidClientId: 'dcad1609-015f-4e1f-8b22-6da513dd3ff2 '
+  AndroidClientId: e677e0dd-4b5c-47de-9718-4fde483d1cdb
   AndroidRedirectUrl: unitytest://snap-kit/oauth2
   AndroidSnapScheme: unitytest
   AndroidSnapHost: snap-kit
