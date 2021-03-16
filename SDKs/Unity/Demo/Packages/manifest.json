@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.unity.nuget.newtonsoft-json": "2.0.0",
+    "com.bitmoji.bitmojiforgames": "file:../../",
     "com.unity.ide.rider": "1.2.1",
     "com.unity.ide.visualstudio": "2.0.2",
     "com.unity.ide.vscode": "1.2.3",
