@@ -2,7 +2,10 @@
     "name": "com.bitmoji.bitmojiforgames",
     "displayName": "BitmojiForGames",
     "version": "1.0.0",
-    "unity": "2019.1.4",
+    "unity": "2019.1",
     "keywords": ["Bitmoji", "avatars"],
-    "description": "Tools for incorporating Bitmoji into Unity projects."
+    "description": "Tools for incorporating Bitmoji into Unity projects.",
+    "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "2.0.0"
+    }
 }

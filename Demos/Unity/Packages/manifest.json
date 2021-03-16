@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.bitmoji.bitmojiforgames": "file:../../",
+    "com.bitmoji.bitmojiforgames": "file:../../../SDKs/Unity",
     "com.unity.ide.rider": "1.2.1",
     "com.unity.ide.visualstudio": "2.0.2",
     "com.unity.ide.vscode": "1.2.3",
