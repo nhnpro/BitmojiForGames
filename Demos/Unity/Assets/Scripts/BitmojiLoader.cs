@@ -1,25 +1,19 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using System.Net.Http;
-using System.Net.Security;
 using System.IO;
-using System.Net.Http.Headers;
 using UnityEngine.UI;
-using Bitmoji.GLTFUtility;
-using Bitmoji;
+using Bitmoji.BitmojiForGames;
 
 public class BitmojiLoader : MonoBehaviour
 {
     public GameObject BitmojiAvatar;
     public SnapKitHandler Snapkit;
     public Text DebugText;
-    public Animation Animation;
 
-    private const string LOCAL_BITMOJI = "Models/NpcBitmoji.glb";
-    private const string LOCAL_DANCE_ANIMATION = "Animations/2284cb1f-4c57-49a2-a298-afce7e848032_default_LOD3.glb";
+    private const string LOCAL_FALLBACK_BITMOJI = "Models/FallbackBitmoji.glb";
+    private const string LOCAL_DANCE_ANIMATION = "Animations/win_dance_LOD3.glb";
 
     private void OnEnable()
     {
@@ -36,7 +30,7 @@ public class BitmojiLoader : MonoBehaviour
     {
         try
         {
-            GameObject npcBitmoji = await Bitmoji.BitmojiForGames.Assets.AddDefaultAvatarToScene(Bitmoji.BitmojiForGames.Assets.LevelOfDetail.LOD3, null);
+            GameObject npcBitmoji = await Assets.AddDefaultAvatarToScene(Assets.LevelOfDetail.LOD3, null);
             DebugText.text = "Downloaded placeholder (ghost) Bitmoji successfully. Login with Snapchat to see your Bitmoji";
             ReplaceBitmoji(npcBitmoji, false);
         }
@@ -44,7 +38,7 @@ public class BitmojiLoader : MonoBehaviour
         {
             DebugText.text = "Couldn't download NPC Bitmoji, using local fallback";
             Debug.Log("Error downloading NPC Bitmoji \n " + ex.Message);
-            GameObject fallbackAvatar = Bitmoji.BitmojiForGames.Assets.AddAvatarToSceneFromFile(Path.Combine(Application.streamingAssetsPath, LOCAL_BITMOJI), Bitmoji.BitmojiForGames.Assets.LevelOfDetail.LOD3);
+            GameObject fallbackAvatar = Assets.AddAvatarToSceneFromFile(Path.Combine(Application.streamingAssetsPath, LOCAL_FALLBACK_BITMOJI), Assets.LevelOfDetail.LOD3);
             ReplaceBitmoji(fallbackAvatar, false);
         }
 
@@ -55,7 +49,7 @@ public class BitmojiLoader : MonoBehaviour
         if (Application.isEditor)
         {
             DebugText.text = "Using test Bitmoji. Build to a mobile device to use the LoginKit flow";
-            GameObject testAvatar = await Bitmoji.BitmojiForGames.Assets.AddTestAvatarToScene(Bitmoji.BitmojiForGames.Assets.LevelOfDetail.LOD3);
+            GameObject testAvatar = await Assets.AddTestAvatarToScene(Assets.LevelOfDetail.LOD3);
             ReplaceBitmoji(testAvatar, true);
         }
         else
@@ -81,7 +75,7 @@ public class BitmojiLoader : MonoBehaviour
         if (doTheDance)
         {
             Animation animation = avatarObject.AddComponent<Animation>();
-            AnimationClip danceAnimation = Bitmoji.BitmojiForGames.Assets.AddAnimationClipFromFile(Path.Combine(Application.streamingAssetsPath, LOCAL_DANCE_ANIMATION), Bitmoji.BitmojiForGames.Assets.LevelOfDetail.LOD3, true);
+            AnimationClip danceAnimation = Assets.AddAnimationClipFromFile(Path.Combine(Application.streamingAssetsPath, LOCAL_DANCE_ANIMATION), Assets.LevelOfDetail.LOD3, true);
             danceAnimation.wrapMode = WrapMode.Loop;
             animation.AddClip(danceAnimation, danceAnimation.name);
             animation.CrossFade(danceAnimation.name);
@@ -107,7 +101,7 @@ public class BitmojiLoader : MonoBehaviour
      */
     private async Task FetchAuthenticatedBitmoji()
     {
-        GameObject bitmoji = await Bitmoji.BitmojiForGames.Assets.AddAvatarToScene(Snapkit.AvatarId, Bitmoji.BitmojiForGames.Assets.LevelOfDetail.LOD3, Snapkit.AccessToken);
+        GameObject bitmoji = await Assets.AddAvatarToScene(Snapkit.AvatarId, Assets.LevelOfDetail.LOD3, Snapkit.AccessToken);
         DebugText.text = "3D Bitmoji downloaded successfully.";
         ReplaceBitmoji(bitmoji, true);
     }
