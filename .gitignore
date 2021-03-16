@@ -1,1 +1,11 @@
+# MacOS
 .DS_Store
+
+# VS Code
+*.vscode
+
+# Gradle cache directory
+.gradle
+
+# Visual Studio cache directory
+.vs
