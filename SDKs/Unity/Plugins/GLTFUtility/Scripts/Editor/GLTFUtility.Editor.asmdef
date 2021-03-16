@@ -1,0 +1,12 @@
+{
+    "name": "Bitmoji.GLTFUtility.Editor",
+    "references": [
+        "Bitmoji.GLTFUtility"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
