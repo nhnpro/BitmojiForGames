@@ -1,0 +1,8 @@
+{
+    "name": "com.bitmoji.bitmojiforgames",
+    "displayName": "BitmojiForGames",
+    "version": "1.0.0",
+    "unity": "2019.1.4",
+    "keywords": ["Bitmoji", "avatars"],
+    "description": "Tools for incorporating Bitmoji into Unity projects."
+}
