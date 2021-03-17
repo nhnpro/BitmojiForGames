@@ -591,6 +591,8 @@ MonoBehaviour:
   BitmojiAvatar: {fileID: 800519155}
   Snapkit: {fileID: 1062665345}
   DebugText: {fileID: 1177446093}
+  StickerObject: {fileID: 715644476}
+  LevelOfDetail: 3
 --- !u!4 &903682257
 Transform:
   m_ObjectHideFlags: 0
