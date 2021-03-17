@@ -5,15 +5,19 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
 using Bitmoji.BitmojiForGames;
+using Bitmoji.BitmojiForGames.Components;
 
 public class BitmojiLoader : MonoBehaviour
 {
     public GameObject BitmojiAvatar;
     public SnapKitHandler Snapkit;
     public Text DebugText;
+    public GameObject StickerObject;
+    public Assets.LevelOfDetail LevelOfDetail = Assets.LevelOfDetail.LOD3;
 
-    private const string LOCAL_FALLBACK_BITMOJI = "Models/FallbackBitmoji.glb";
-    private const string LOCAL_DANCE_ANIMATION = "Animations/win_dance_LOD3.glb";
+    private const string LOCAL_FALLBACK_BITMOJI_PREFIX = "Models/fallback_bitmoji_LOD";
+    private const string LOCAL_DANCE_ANIMATION_PREFIX = "Animations/win_dance_";
+    private const string STICKER_ID = "9e669e76-bd42-43ba-bc81-83741de280f5";
 
     private void OnEnable()
     {
@@ -30,7 +34,7 @@ public class BitmojiLoader : MonoBehaviour
     {
         try
         {
-            GameObject npcBitmoji = await Assets.AddDefaultAvatarToScene(Assets.LevelOfDetail.LOD3, null);
+            GameObject npcBitmoji = await Assets.AddDefaultAvatarToScene(LevelOfDetail, null);
             DebugText.text = "Downloaded placeholder (ghost) Bitmoji successfully. Login with Snapchat to see your Bitmoji";
             ReplaceBitmoji(npcBitmoji, false);
         }
@@ -38,7 +42,8 @@ public class BitmojiLoader : MonoBehaviour
         {
             DebugText.text = "Couldn't download NPC Bitmoji, using local fallback";
             Debug.Log("Error downloading NPC Bitmoji \n " + ex.Message);
-            GameObject fallbackAvatar = Assets.AddAvatarToSceneFromFile(Path.Combine(Application.streamingAssetsPath, LOCAL_FALLBACK_BITMOJI), Assets.LevelOfDetail.LOD3);
+            string fallbackBitmojiFilename = LOCAL_FALLBACK_BITMOJI_PREFIX + (LevelOfDetail.Equals(Assets.LevelOfDetail.LOD0) ? "0.glb" : "3.glb");
+            GameObject fallbackAvatar = Assets.AddAvatarToSceneFromFile(Path.Combine(Application.streamingAssetsPath, fallbackBitmojiFilename), LevelOfDetail);
             ReplaceBitmoji(fallbackAvatar, false);
         }
 
@@ -49,7 +54,7 @@ public class BitmojiLoader : MonoBehaviour
         if (Application.isEditor)
         {
             DebugText.text = "Using test Bitmoji. Build to a mobile device to use the LoginKit flow";
-            GameObject testAvatar = await Assets.AddTestAvatarToScene(Assets.LevelOfDetail.LOD3);
+            GameObject testAvatar = await Assets.AddTestAvatarToScene(LevelOfDetail);
             ReplaceBitmoji(testAvatar, true);
         }
         else
@@ -61,7 +66,7 @@ public class BitmojiLoader : MonoBehaviour
     /***
      * Replaces the current Bitmoji in the scene with a new one
      */
-    private void ReplaceBitmoji(GameObject avatarObject, bool doTheDance)
+    private async void ReplaceBitmoji(GameObject avatarObject, bool doTheDance, string avatarId = null)
     {
         // Clear children
         var children = new List<GameObject>();
@@ -75,7 +80,20 @@ public class BitmojiLoader : MonoBehaviour
         if (doTheDance)
         {
             Animation animation = avatarObject.AddComponent<Animation>();
-            AnimationClip danceAnimation = Assets.AddAnimationClipFromFile(Path.Combine(Application.streamingAssetsPath, LOCAL_DANCE_ANIMATION), Assets.LevelOfDetail.LOD3, true);
+
+            string danceAnimationFilename = LOCAL_DANCE_ANIMATION_PREFIX;
+            AvatarAttributes avatarAttributes = avatarObject.GetComponent<AvatarAttributes>();
+            if(avatarAttributes != null && avatarAttributes.AnimationBodyType != null) 
+            {
+                danceAnimationFilename += avatarAttributes.AnimationBodyType;
+            } 
+            else
+            {
+                danceAnimationFilename += "default";
+            }
+            danceAnimationFilename += (LevelOfDetail.Equals(Assets.LevelOfDetail.LOD0) ? "_LOD0.glb" : "_LOD3.glb");
+
+            AnimationClip danceAnimation = Assets.AddAnimationClipFromFile(Path.Combine(Application.streamingAssetsPath, danceAnimationFilename), LevelOfDetail, true);
             danceAnimation.wrapMode = WrapMode.Loop;
             animation.AddClip(danceAnimation, danceAnimation.name);
             animation.CrossFade(danceAnimation.name);
@@ -84,6 +102,15 @@ public class BitmojiLoader : MonoBehaviour
         // Set parent
         avatarObject.transform.parent = BitmojiAvatar.transform;
         avatarObject.transform.localRotation = Quaternion.identity;
+
+        if(avatarId != null)
+        {
+            RawImage rawImageComponent = StickerObject.GetComponent<RawImage>();
+            if(rawImageComponent != null)
+            {
+                rawImageComponent.texture = await Assets.GetStickerAsTexture(avatarId, STICKER_ID);
+            }
+        }
     }
 
     /**
@@ -101,9 +128,15 @@ public class BitmojiLoader : MonoBehaviour
      */
     private async Task FetchAuthenticatedBitmoji()
     {
-        GameObject bitmoji = await Assets.AddAvatarToScene(Snapkit.AvatarId, Assets.LevelOfDetail.LOD3, Snapkit.AccessToken);
+        Dictionary<string, string> additionalParameters = new Dictionary<string, string>();
+        if(LevelOfDetail.Equals(Assets.LevelOfDetail.LOD0))
+        {
+            additionalParameters.Add("usePbr", "true");
+        }
+
+        GameObject bitmoji = await Assets.AddAvatarToScene(Snapkit.AvatarId, LevelOfDetail, Snapkit.AccessToken, null, additionalParameters);
         DebugText.text = "3D Bitmoji downloaded successfully.";
-        ReplaceBitmoji(bitmoji, true);
+        ReplaceBitmoji(bitmoji, true, Snapkit.AvatarId);
     }
 
 }

@@ -23,12 +23,15 @@ namespace Bitmoji.BitmojiForGames
             Female = 2
         }
 
-        private const string BASE_URL = "https://bitmoji.api.snapchat.com/bitmoji-for-games";
-		private const string AVATAR_URL = BASE_URL + "/model";
-		private const string DEFAULT_AVATAR_URL = BASE_URL + "/default_avatar";
-		private const string ANIMATION_URL = BASE_URL + "/animation";
-		private const string TEST_AVATAR_URL = BASE_URL + "/test_avatar";
-        private const string PROP_URL = BASE_URL + "/prop";
+        private const string BFG_BASE_URL = "https://bitmoji.api.snapchat.com/bitmoji-for-games";
+		private const string AVATAR_URL = BFG_BASE_URL + "/model";
+		private const string DEFAULT_AVATAR_URL = BFG_BASE_URL + "/default_avatar";
+		private const string ANIMATION_URL = BFG_BASE_URL + "/animation";
+		private const string TEST_AVATAR_URL = BFG_BASE_URL + "/test_avatar";
+        private const string PROP_URL = BFG_BASE_URL + "/prop";
+
+        private const string SDK_BASE_URL = "https://sdk.bitmoji.com";
+        private const string STICKER_URL = SDK_BASE_URL + "/me/sticker";
 
         internal const string LOD3_AVATAR_PATH = "AVATAR";
         internal const string LOD3_GLASSES_PATH = LOD3_AVATAR_PATH + "/C_glasses_GEO";
@@ -129,6 +132,17 @@ namespace Bitmoji.BitmojiForGames
             return await DownloadFile(PROP_URL, snapAccessToken, queryParameters);
         }
 
+        private static async Task<byte[]> DownloadStickerAsync(string avatarId, string stickerId, bool isFriend = false)
+        {
+            string stickerUrl = STICKER_URL + "/" + avatarId + "/" + stickerId;
+            Dictionary<string, string> queryParameters = new Dictionary<string, string>();
+            if(isFriend)
+            {
+                queryParameters.Add("friend", "1");
+            }
+            return await DownloadFile(stickerUrl, null, queryParameters);
+        }
+
         private static GameObject InstantiateGlb(in byte[] glbBytes, in LevelOfDetail levelOfDetail, in GameObject parentObject = null)
         {
             GLTFUtility.ImportSettings importSettings = new GLTFUtility.ImportSettings();
@@ -178,6 +192,13 @@ namespace Bitmoji.BitmojiForGames
             return (animations.Length > 0) ? animations[0] : null;
         }
 
+        private static Texture2D InstantiateImageTexture(in byte[] stickerBytes)
+        {
+            Texture2D tex = new Texture2D(1, 1);
+            tex.LoadImage(stickerBytes);
+            return tex;
+        }
+
 		public static async Task<GameObject> AddAvatarToScene(string avatarId, LevelOfDetail levelOfDetail, string snapAccessToken, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
         {
 			return InstantiateGlb(await DownloadAvatarAsync(avatarId, levelOfDetail, snapAccessToken, additionalParameters), levelOfDetail, parentObject);
@@ -211,6 +232,11 @@ namespace Bitmoji.BitmojiForGames
         public static AnimationClip AddAnimationClipFromFile(string animationFilePath, LevelOfDetail levelOfDetail, bool useLegacyClips = true, Dictionary<string, string> additionalParameters = null)
         {
             return InstantiateGlbAnimation(File.ReadAllBytes(animationFilePath), levelOfDetail, useLegacyClips);
+        }
+
+        public static async Task<Texture2D> GetStickerAsTexture(string avatarId, string stickerId, bool isFriend = false)
+        {
+            return InstantiateImageTexture(await DownloadStickerAsync(avatarId, stickerId, isFriend));
         }
     }
 }

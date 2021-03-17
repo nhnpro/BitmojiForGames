@@ -189,6 +189,27 @@ Parameters:
 - `GameObject parentObject` - Optional - the object in the current scene to parent the avatar to.
 - `Dictionary<string, string> additionalParameters` - Optional - additional parameters to send with the request. Currently, there are no valid parameters to pass into this field.
 
+### <a id="stickers">Stickers</a>
+
+```csharp
+namespace Bitmoji.BitmojiForGames {
+    public static class Assets {
+        public static async Task<Texture2D> GetStickerAsTexture(string avatarId,
+                                                                string stickerId,
+                                                                bool isFriend = false);
+    }
+}
+```
+
+Add a Bitmoji sticker as a 2D texture by asynchronously downloading via the Bitmoji SDK service.
+
+Parameters:
+- `string avatarId` - Required - the avatar ID for the request. Retrieved from Snap Kit.
+- `string stickerId` - Required - the sticker ID for the request.
+- `bool isFriend` - Optional - indicates whether the sticker being downloaded is for the current user (`false`) or someone else (`true`).
+
+See https://support.canvas.snapchat.com/hc/en-us/articles/360056731112 for more details on getting sticker IDs.
+
 ### <a id="components">Components</a>
 
 The Bitmoji for Games plug-in provides some special components that will be attached to loaded GameObjects in certain cases.
