@@ -1,0 +1,27 @@
+allprojects {
+    buildscript {
+        repositories {
+            google()
+            jcenter()
+        }
+
+        dependencies {
+            classpath 'com.android.tools.build:gradle:3.4.0'
+        }
+    }
+
+    repositories {
+        google()
+        jcenter()
+        flatDir {
+            dirs "${project(':unityLibrary').projectDir}/libs"
+        }
+        maven {
+            url "https://storage.googleapis.com/snap-kit-build/maven"
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
