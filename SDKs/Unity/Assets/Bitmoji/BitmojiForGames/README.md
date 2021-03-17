@@ -53,6 +53,7 @@ namespace Bitmoji.BitmojiForGames {
     public static class Assets {
         public static GameObject AddAvatarToSceneFromFile(string avatarFilePath,
                                                           LevelOfDetail levelOfDetail,
+                                                          bool isResourcePath = false,
                                                           GameObject parentObject = null,
                                                           Dictionary<string, string> additionalParameters = null);
     }
@@ -64,6 +65,7 @@ Adds an avatar to the current scene by loading the avatar from a local GLB file.
 Parameters:
 - `string avatarFilePath` - Required - the location of the avatar GLB file to load. Typically in `StreamingAssets` if loading at runtime.
 - `LevelOfDetail levelOfDetail` - Required - the level of detail to use for the request. See [__Level of Detail__](#level-of-detail) for more information.
+- `bool isResourcePath` - Optional - whether the given file path is a `Resource` or not. If `true`, the loader will attempt to load the resource as a `TextAsset` and read its bytes directly.
 - `GameObject parentObject` - Optional - the object in the current scene to parent the avatar to.
 - `Dictionary<string, string> additionalParameters` - Optional - additional parameters to send with the request. See [__Additional Avatar Parameters__](#additional-avatar-parameters) for more information.
 
@@ -145,6 +147,7 @@ namespace Bitmoji.BitmojiForGames {
     public static class Assets {
         public static AnimationClip AddAnimationClipFromFile(string animationFilePath,
                                                             LevelOfDetail levelOfDetail,
+                                                            bool isResourcePath = false,
                                                             bool useLegacyClips = true,
                                                             Dictionary<string, string> additionalParameters = null);
     }
@@ -156,7 +159,7 @@ Adds a Bitmoji-compatible animation clip to the current scene by loading the ani
 Parameters:
 - `string animationFilePath` - Required - the location of the animation GLB file to load. Typically in `StreamingAssets` if loading at runtime.
 - `LevelOfDetail levelOfDetail` - Required - the level of detail to use for the request. See [__Level of Detail__](#level-of-detail) for more information.
-- `string snapAccessToken` - Required - the authorization token needed for the request. Retrieved from Snap Kit.
+- `bool isResourcePath` - Optional - whether the given file path is a `Resource` or not. If `true`, the loader will attempt to load the resource as a `TextAsset` and read its bytes directly.
 - `bool useLegacyClips` - Optional - whether the `AnimationClip` should be loaded as a Legacy animation or not. Typically, animations loaded at runtime function better as Legacy than Mecanim (for example, you cannot currently set the clip to loop in Mecanim).
 - `Dictionary<string, string> additionalParameters` - Optional - additional parameters to send with the request. See [__Additional Animation Parameters__](#additional-animation-parameters) for more information.
 
