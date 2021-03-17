@@ -192,6 +192,19 @@ namespace Bitmoji.BitmojiForGames
             return (animations.Length > 0) ? animations[0] : null;
         }
 
+        private static byte[] GetBytesFromResourcePath(in string resourcePath)
+        {
+            TextAsset textAsset = Resources.Load<TextAsset>(resourcePath);
+            if (textAsset != null)
+            {
+                return textAsset.bytes;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         private static Texture2D InstantiateImageTexture(in byte[] stickerBytes)
         {
             Texture2D tex = new Texture2D(1, 1);
@@ -204,9 +217,18 @@ namespace Bitmoji.BitmojiForGames
 			return InstantiateGlb(await DownloadAvatarAsync(avatarId, levelOfDetail, snapAccessToken, additionalParameters), levelOfDetail, parentObject);
         }
 
-        public static GameObject AddAvatarToSceneFromFile(string avatarFilePath, LevelOfDetail levelOfDetail, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
+        public static GameObject AddAvatarToSceneFromFile(string avatarFilePath, LevelOfDetail levelOfDetail, bool isResourcePath = false, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
         {
-            return InstantiateGlb(File.ReadAllBytes(avatarFilePath), levelOfDetail, parentObject);
+            byte[] avatarBytes = null;
+            if(isResourcePath)
+            {
+                avatarBytes = GetBytesFromResourcePath(avatarFilePath);
+            }
+            else
+            {
+                avatarBytes = File.ReadAllBytes(avatarFilePath);
+            }
+            return InstantiateGlb(avatarBytes, levelOfDetail, parentObject);
         }
 
         public static async Task<GameObject> AddDefaultAvatarToScene(LevelOfDetail levelOfDetail, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
@@ -229,9 +251,18 @@ namespace Bitmoji.BitmojiForGames
             return InstantiateGlbAnimation(await DownloadAnimationAsync(animationLibraryId, levelOfDetail, snapAccessToken, animationBodyType, additionalParameters), levelOfDetail, useLegacyClips);
         }
 
-        public static AnimationClip AddAnimationClipFromFile(string animationFilePath, LevelOfDetail levelOfDetail, bool useLegacyClips = true, Dictionary<string, string> additionalParameters = null)
+        public static AnimationClip AddAnimationClipFromFile(string animationFilePath, LevelOfDetail levelOfDetail, bool isResourcePath = false, bool useLegacyClips = true, Dictionary<string, string> additionalParameters = null)
         {
-            return InstantiateGlbAnimation(File.ReadAllBytes(animationFilePath), levelOfDetail, useLegacyClips);
+            byte[] animationBytes = null;
+            if (isResourcePath)
+            {
+                animationBytes = GetBytesFromResourcePath(animationFilePath);
+            }
+            else
+            {
+                animationBytes = File.ReadAllBytes(animationFilePath);
+            }
+            return InstantiateGlbAnimation(animationBytes, levelOfDetail, useLegacyClips);
         }
 
         public static async Task<Texture2D> GetStickerAsTexture(string avatarId, string stickerId, bool isFriend = false)

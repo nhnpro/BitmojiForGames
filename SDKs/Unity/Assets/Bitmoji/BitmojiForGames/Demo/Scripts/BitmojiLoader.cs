@@ -42,11 +42,10 @@ public class BitmojiLoader : MonoBehaviour
         {
             DebugText.text = "Couldn't download NPC Bitmoji, using local fallback";
             Debug.Log("Error downloading NPC Bitmoji \n " + ex.Message);
-            string fallbackBitmojiFilename = LOCAL_FALLBACK_BITMOJI_PREFIX + (LevelOfDetail.Equals(Assets.LevelOfDetail.LOD0) ? "0.glb" : "3.glb");
-            GameObject fallbackAvatar = Assets.AddAvatarToSceneFromFile(Path.Combine(Application.streamingAssetsPath, fallbackBitmojiFilename), LevelOfDetail);
+            string fallbackBitmojiFilename = LOCAL_FALLBACK_BITMOJI_PREFIX + (LevelOfDetail.Equals(Assets.LevelOfDetail.LOD0) ? "0" : "3");
+            GameObject fallbackAvatar = Assets.AddAvatarToSceneFromFile(fallbackBitmojiFilename, LevelOfDetail, true);
             ReplaceBitmoji(fallbackAvatar, false);
         }
-
     }
 
     public async void OnButtonTap_Login()
@@ -93,7 +92,7 @@ public class BitmojiLoader : MonoBehaviour
             }
             danceAnimationFilename += (LevelOfDetail.Equals(Assets.LevelOfDetail.LOD0) ? "_LOD0.glb" : "_LOD3.glb");
 
-            AnimationClip danceAnimation = Assets.AddAnimationClipFromFile(Path.Combine(Application.streamingAssetsPath, danceAnimationFilename), LevelOfDetail, true);
+            AnimationClip danceAnimation = Assets.AddAnimationClipFromFile(danceAnimationFilename, LevelOfDetail, true);
             danceAnimation.wrapMode = WrapMode.Loop;
             animation.AddClip(danceAnimation, danceAnimation.name);
             animation.CrossFade(danceAnimation.name);
