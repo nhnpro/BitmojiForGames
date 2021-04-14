@@ -3,7 +3,9 @@ Bitmoji for Games Unity Plugin API
 
 The Bitmoji for Games Unity Plugin provides a convenient set of functions for loading content from the Bitmoji for Games service, including avatars, animations, and props.
 
-NOTE: This plug-in depends on the Snap Kit plug-in for Unity for authentication.
+NOTE: This plug-in depends on the [Snap Kit plug-in for Unity](https://assetstore.unity.com/packages/tools/integration/snap-kit-sdk-184712) for authentication. Please select Login Kit from the toggles there (Bitmoji Kit and Creative Kit are not necessary for this integration).
+
+If you decide you want to have users' personalized avatars, you need authentication and permission from the Bitmoji group. To obtain permission, please send your non-confidential Snap Kit client ID to games@bitmoji.com. See [here](https://github.com/Bitmoji/BitmojiForGames/tree/master/Documentation/DeveloperGuide#step-3---access-bitmoji-avatars) for more information.
 
 Assets
 ------
