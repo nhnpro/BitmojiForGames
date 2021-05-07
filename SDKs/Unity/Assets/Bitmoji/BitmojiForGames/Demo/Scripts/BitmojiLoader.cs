@@ -82,10 +82,10 @@ public class BitmojiLoader : MonoBehaviour
 
             string danceAnimationFilename = LOCAL_DANCE_ANIMATION_PREFIX;
             AvatarAttributes avatarAttributes = avatarObject.GetComponent<AvatarAttributes>();
-            if(avatarAttributes != null && avatarAttributes.AnimationBodyType != null) 
+            if (avatarAttributes != null && avatarAttributes.AnimationBodyType != null)
             {
                 danceAnimationFilename += avatarAttributes.AnimationBodyType;
-            } 
+            }
             else
             {
                 danceAnimationFilename += "default";
@@ -102,10 +102,10 @@ public class BitmojiLoader : MonoBehaviour
         avatarObject.transform.parent = BitmojiAvatar.transform;
         avatarObject.transform.localRotation = Quaternion.identity;
 
-        if(avatarId != null)
+        if (avatarId != null)
         {
             RawImage rawImageComponent = StickerObject.GetComponent<RawImage>();
-            if(rawImageComponent != null)
+            if (rawImageComponent != null)
             {
                 rawImageComponent.texture = await Assets.GetStickerAsTexture(avatarId, STICKER_ID);
             }
@@ -128,7 +128,7 @@ public class BitmojiLoader : MonoBehaviour
     private async Task FetchAuthenticatedBitmoji()
     {
         Dictionary<string, string> additionalParameters = new Dictionary<string, string>();
-        if(LevelOfDetail.Equals(Assets.LevelOfDetail.LOD0))
+        if (LevelOfDetail.Equals(Assets.LevelOfDetail.LOD0))
         {
             additionalParameters.Add("usePbr", "true");
         }

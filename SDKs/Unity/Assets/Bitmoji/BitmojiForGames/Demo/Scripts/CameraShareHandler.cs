@@ -45,7 +45,7 @@ public class CameraShareHandler : MonoBehaviour
             };
             CreativeKit.Share(shareContent);
         }
-        
+
     }
 
     private void OnCreativeKitShareSucceeded()

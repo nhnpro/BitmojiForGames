@@ -16,7 +16,7 @@ public class RotateOnDrag : MonoBehaviour
             // APPLY ROTATION
             if (touch0.phase == TouchPhase.Moved)
             {
-                this.transform.Rotate(0f, - touch0.deltaPosition.x, 0f);
+                this.transform.Rotate(0f, -touch0.deltaPosition.x, 0f);
             }
 
         }
@@ -25,10 +25,10 @@ public class RotateOnDrag : MonoBehaviour
         {
             var delta = Input.mousePosition - prevMousePosition;
             this.transform.Rotate(0f, -delta.x, 0f);
-        } 
+        }
 
         prevMousePosition = Input.mousePosition;
-        
+
     }
 
 }

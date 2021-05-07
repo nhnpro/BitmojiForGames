@@ -9,8 +9,8 @@ using UnityEngine;
 
 namespace Bitmoji.BitmojiForGames
 {
-	public static class Assets
-	{
+    public static class Assets
+    {
         public enum LevelOfDetail : ushort
         {
             LOD0 = 0,
@@ -18,10 +18,10 @@ namespace Bitmoji.BitmojiForGames
         }
 
         private const string BFG_BASE_URL = "https://bitmoji.api.snapchat.com/bitmoji-for-games";
-		private const string AVATAR_URL = BFG_BASE_URL + "/model";
-		private const string DEFAULT_AVATAR_URL = BFG_BASE_URL + "/default_avatar";
-		private const string ANIMATION_URL = BFG_BASE_URL + "/animation";
-		private const string TEST_AVATAR_URL = BFG_BASE_URL + "/test_avatar";
+        private const string AVATAR_URL = BFG_BASE_URL + "/model";
+        private const string DEFAULT_AVATAR_URL = BFG_BASE_URL + "/default_avatar";
+        private const string ANIMATION_URL = BFG_BASE_URL + "/animation";
+        private const string TEST_AVATAR_URL = BFG_BASE_URL + "/test_avatar";
         private const string PROP_URL = BFG_BASE_URL + "/prop";
 
         private const string SDK_BASE_URL = "https://sdk.bitmoji.com";
@@ -130,7 +130,7 @@ namespace Bitmoji.BitmojiForGames
         {
             string stickerUrl = STICKER_URL + "/" + avatarId + "/" + stickerId;
             Dictionary<string, string> queryParameters = new Dictionary<string, string>();
-            if(isFriend)
+            if (isFriend)
             {
                 queryParameters.Add("friend", "1");
             }
@@ -148,7 +148,7 @@ namespace Bitmoji.BitmojiForGames
             if (levelOfDetail == LevelOfDetail.LOD3)
             {
                 Transform glassesTransform = importedObject.transform.Find(LOD3_GLASSES_PATH);
-                if(glassesTransform != null)
+                if (glassesTransform != null)
                 {
                     GameObject glassesObject = glassesTransform.gameObject;
                     SkinnedMeshRenderer skinnedMeshRenderer = glassesObject.GetComponent<SkinnedMeshRenderer>();
@@ -159,7 +159,7 @@ namespace Bitmoji.BitmojiForGames
                 }
             }
 
-            if(parentObject != null)
+            if (parentObject != null)
             {
                 importedObject.transform.parent = parentObject.transform;
             }
@@ -167,7 +167,7 @@ namespace Bitmoji.BitmojiForGames
             return importedObject;
         }
 
-		private static AnimationClip InstantiateGlbAnimation(in byte[] glbBytes, in LevelOfDetail levelOfDetail, in bool useLegacyClips)
+        private static AnimationClip InstantiateGlbAnimation(in byte[] glbBytes, in LevelOfDetail levelOfDetail, in bool useLegacyClips)
         {
             GLTFUtility.ImportSettings importSettings = new GLTFUtility.ImportSettings();
             importSettings.animationSettings.frameRate = 30;
@@ -206,15 +206,15 @@ namespace Bitmoji.BitmojiForGames
             return tex;
         }
 
-		public static async Task<GameObject> AddAvatarToScene(string avatarId, LevelOfDetail levelOfDetail, string snapAccessToken, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
+        public static async Task<GameObject> AddAvatarToScene(string avatarId, LevelOfDetail levelOfDetail, string snapAccessToken, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
         {
-			return InstantiateGlb(await DownloadAvatarAsync(avatarId, levelOfDetail, snapAccessToken, additionalParameters), levelOfDetail, parentObject);
+            return InstantiateGlb(await DownloadAvatarAsync(avatarId, levelOfDetail, snapAccessToken, additionalParameters), levelOfDetail, parentObject);
         }
 
         public static GameObject AddAvatarToSceneFromFile(string avatarFilePath, LevelOfDetail levelOfDetail, bool isResourcePath = false, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
         {
             byte[] avatarBytes = null;
-            if(isResourcePath)
+            if (isResourcePath)
             {
                 avatarBytes = GetBytesFromResourcePath(avatarFilePath);
             }
@@ -230,17 +230,17 @@ namespace Bitmoji.BitmojiForGames
             return InstantiateGlb(await DownloadDefaultAvatarAsync(levelOfDetail, additionalParameters), levelOfDetail, parentObject);
         }
 
-		public static async Task<GameObject> AddTestAvatarToScene(LevelOfDetail levelOfDetail, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
+        public static async Task<GameObject> AddTestAvatarToScene(LevelOfDetail levelOfDetail, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
         {
             return InstantiateGlb(await DownloadTestAvatarAsync(levelOfDetail, additionalParameters), levelOfDetail, parentObject);
         }
 
-		public static async Task<GameObject> AddPropFromLibraryToScene(string propLibraryId, LevelOfDetail levelOfDetail, string snapAccessToken, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
+        public static async Task<GameObject> AddPropFromLibraryToScene(string propLibraryId, LevelOfDetail levelOfDetail, string snapAccessToken, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
         {
             return InstantiateGlb(await DownloadPropAsync(propLibraryId, levelOfDetail, snapAccessToken, additionalParameters), levelOfDetail, parentObject);
         }
 
-		public static async Task<AnimationClip> AddAnimationClipFromLibrary(string animationLibraryId, LevelOfDetail levelOfDetail, string snapAccessToken, string animationBodyType = "default", bool useLegacyClips = true, Dictionary<string, string> additionalParameters = null)
+        public static async Task<AnimationClip> AddAnimationClipFromLibrary(string animationLibraryId, LevelOfDetail levelOfDetail, string snapAccessToken, string animationBodyType = "default", bool useLegacyClips = true, Dictionary<string, string> additionalParameters = null)
         {
             return InstantiateGlbAnimation(await DownloadAnimationAsync(animationLibraryId, levelOfDetail, snapAccessToken, animationBodyType, additionalParameters), levelOfDetail, useLegacyClips);
         }

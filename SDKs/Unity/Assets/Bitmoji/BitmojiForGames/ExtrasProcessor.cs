@@ -17,7 +17,8 @@ namespace Bitmoji.BitmojiForGames
                 {
                     Dictionary<string, Texture2D> faceTextures = new Dictionary<string, Texture2D>();
                     JArray facialExpressionTextures = extras["facialExpressionTextures"].Value<JArray>();
-                    if (facialExpressionTextures.Count > 0) {
+                    if (facialExpressionTextures.Count > 0)
+                    {
                         foreach (JObject currentExpression in facialExpressionTextures)
                         {
                             string expressionName = currentExpression["name"].ToString();
@@ -30,7 +31,8 @@ namespace Bitmoji.BitmojiForGames
                             faceTextures.Add(expressionName, tex);
                         }
                         Transform headTransform = importedObject.transform.Find(Assets.LOD3_HEAD_PATH);
-                        if (headTransform != null) {
+                        if (headTransform != null)
+                        {
                             Components.FacialExpressionTextures facialExpressionTexturesComponent = importedObject.AddComponent<Components.FacialExpressionTextures>();
                             facialExpressionTexturesComponent.headObject = headTransform.gameObject;
                             facialExpressionTexturesComponent.faceTextures = faceTextures;
@@ -38,7 +40,7 @@ namespace Bitmoji.BitmojiForGames
                     }
                 }
 
-                if(extras.ContainsKey("gender") && extras.ContainsKey("animationBodyType"))
+                if (extras.ContainsKey("gender") && extras.ContainsKey("animationBodyType"))
                 {
                     Components.AvatarAttributes avatarAttributes = importedObject.AddComponent<Components.AvatarAttributes>();
                     avatarAttributes.Gender = extras["gender"].Value<string>();

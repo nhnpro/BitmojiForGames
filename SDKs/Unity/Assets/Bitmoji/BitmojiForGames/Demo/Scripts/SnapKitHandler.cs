@@ -8,8 +8,8 @@ public class SnapKitHandler : MonoBehaviour
 {
     public event Action OnUserDataFetched;
 
-    public string AccessToken { get;  private set; }
-    public string AvatarId { get;  private set; }
+    public string AccessToken { get; private set; }
+    public string AvatarId { get; private set; }
 
     private const string BITMOJI_SCOPE = "https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar";
 
@@ -35,7 +35,7 @@ public class SnapKitHandler : MonoBehaviour
         {
             LoginKit.Login();
         }
-        
+
     }
 
     private void OnLoginCompleted()
@@ -49,10 +49,11 @@ public class SnapKitHandler : MonoBehaviour
 
         if (Application.platform == RuntimePlatform.Android)
         {
-            var response = JsonUtility.FromJson<SnapKitUserInfo>(json);            
+            var response = JsonUtility.FromJson<SnapKitUserInfo>(json);
             this.AvatarId = response.bitmoji.id;
 
-        } else if (Application.platform == RuntimePlatform.IPhonePlayer)
+        }
+        else if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
             var response = JsonUtility.FromJson<SnapKitResponse>(json);
             this.AvatarId = response.data.me.bitmoji.id;
