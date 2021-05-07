@@ -183,6 +183,59 @@ namespace Bitmoji.GLTFUtility {
 			}
 		}
 
+		private static void ProcessExtrasInternal(GameObject gameObject, GLTFObject gltfObject, ImportSettings importSettings, AnimationClip[] animations) {
+			if(gltfObject.extras == null)
+			{
+				gltfObject.extras = new JObject();
+			}
+
+			if(gltfObject.materials != null)
+			{
+				JArray materialExtras = new JArray();
+				bool hasMaterialExtraData = false;
+				foreach (GLTFMaterial material in gltfObject.materials)
+				{
+					if (material.extras != null)
+					{
+						materialExtras.Add(material.extras);
+						hasMaterialExtraData = true;
+					}
+					else
+					{
+						materialExtras.Add(new JObject());
+					}
+				}
+				if (hasMaterialExtraData)
+				{
+					gltfObject.extras.Add("material", materialExtras);
+				}
+			}
+
+			if (gltfObject.animations != null)
+			{
+				JArray animationExtras = new JArray();
+				bool hasAnimationExtraData = false;
+				foreach (GLTFAnimation animation in gltfObject.animations)
+				{
+					if (animation.extras != null)
+					{
+						hasAnimationExtraData = true;
+						animationExtras.Add(animation.extras);
+					}
+					else
+					{
+						animationExtras.Add(new JObject());
+					}
+				}
+				if (hasAnimationExtraData)
+				{
+					gltfObject.extras.Add("animation", animationExtras);
+				}
+			}
+
+			importSettings.extrasProcessor.ProcessExtras(gameObject, animations, gltfObject.extras);
+		}
+
 #region Sync
 		private static GameObject LoadInternal(this GLTFObject gltfObject, string filepath, byte[] bytefile, long binChunkStart, ImportSettings importSettings, out AnimationClip[] animations) {
 			CheckExtensions(gltfObject);
@@ -220,59 +273,7 @@ namespace Bitmoji.GLTFUtility {
 			}
 
 			GameObject gameObject = nodeTask.Result.GetRoot();
-			if (importSettings.extrasProcessor != null)
-			{
-				if(gltfObject.extras == null)
-				{
-					gltfObject.extras = new JObject();
-				}
-
-				if(gltfObject.materials != null)
-				{
-					JArray materialExtras = new JArray();
-					bool hasMaterialExtraData = false;
-					foreach (GLTFMaterial material in gltfObject.materials)
-					{
-						if (material.extras != null)
-						{
-							materialExtras.Add(material.extras);
-							hasMaterialExtraData = true;
-						}
-						else
-						{
-							materialExtras.Add(new JObject());
-						}
-					}
-					if (hasMaterialExtraData)
-					{
-						gltfObject.extras.Add("material", materialExtras);
-					}
-				}
-
-				if (gltfObject.animations != null)
-				{
-					JArray animationExtras = new JArray();
-					bool hasAnimationExtraData = false;
-					foreach (GLTFAnimation animation in gltfObject.animations)
-					{
-						if (animation.extras != null)
-						{
-							hasAnimationExtraData = true;
-							animationExtras.Add(animation.extras);
-						}
-						else
-						{
-							animationExtras.Add(new JObject());
-						}
-					}
-					if (hasAnimationExtraData)
-					{
-						gltfObject.extras.Add("animation", animationExtras);
-					}
-				}
-
-				importSettings.extrasProcessor.ProcessExtras(gameObject, animations, gltfObject.extras);
-			}
+			if (importSettings.extrasProcessor != null) ProcessExtrasInternal(gameObject, gltfObject, importSettings, animations);
 			return gameObject;
 		}
 #endregion
@@ -326,6 +327,7 @@ namespace Bitmoji.GLTFUtility {
 			GLTFAnimation.ImportResult[] animationResult = gltfObject.animations.Import(accessorTask.Result, nodeTask.Result, importSettings);
 			AnimationClip[] animations = new AnimationClip[0];
 			if (animationResult != null) animations = animationResult.Select(x => x.clip).ToArray();
+			if (importSettings.extrasProcessor != null) ProcessExtrasInternal(root, gltfObject, importSettings, animations);
 			if (onFinished != null) onFinished(nodeTask.Result.GetRoot(), animations);
 
 			// Close file streams

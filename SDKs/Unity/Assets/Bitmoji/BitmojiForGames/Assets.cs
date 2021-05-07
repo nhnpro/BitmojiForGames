@@ -17,12 +17,6 @@ namespace Bitmoji.BitmojiForGames
             LOD3 = 3
         }
 
-        public enum CharacterGender : ushort
-        {
-            Male = 1,
-            Female = 2
-        }
-
         private const string BFG_BASE_URL = "https://bitmoji.api.snapchat.com/bitmoji-for-games";
 		private const string AVATAR_URL = BFG_BASE_URL + "/model";
 		private const string DEFAULT_AVATAR_URL = BFG_BASE_URL + "/default_avatar";
@@ -172,7 +166,7 @@ namespace Bitmoji.BitmojiForGames
 
             return importedObject;
         }
-		
+
 		private static AnimationClip InstantiateGlbAnimation(in byte[] glbBytes, in LevelOfDetail levelOfDetail, in bool useLegacyClips)
         {
             GLTFUtility.ImportSettings importSettings = new GLTFUtility.ImportSettings();
@@ -235,7 +229,7 @@ namespace Bitmoji.BitmojiForGames
         {
             return InstantiateGlb(await DownloadDefaultAvatarAsync(levelOfDetail, additionalParameters), levelOfDetail, parentObject);
         }
-		
+
 		public static async Task<GameObject> AddTestAvatarToScene(LevelOfDetail levelOfDetail, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
         {
             return InstantiateGlb(await DownloadTestAvatarAsync(levelOfDetail, additionalParameters), levelOfDetail, parentObject);

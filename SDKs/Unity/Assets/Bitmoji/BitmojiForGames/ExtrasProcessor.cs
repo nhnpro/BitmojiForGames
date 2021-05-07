@@ -41,7 +41,7 @@ namespace Bitmoji.BitmojiForGames
                 if(extras.ContainsKey("gender") && extras.ContainsKey("animationBodyType"))
                 {
                     Components.AvatarAttributes avatarAttributes = importedObject.AddComponent<Components.AvatarAttributes>();
-                    avatarAttributes.Gender = (Assets.CharacterGender)extras["gender"].Value<ushort>();
+                    avatarAttributes.Gender = extras["gender"].Value<string>();
                     avatarAttributes.AnimationBodyType = extras["animationBodyType"].Value<string>();
                 }
 
@@ -66,7 +66,7 @@ namespace Bitmoji.BitmojiForGames
                                     faceSwapEvent.time = times[j].Value<float>();
                                     faceSwapEvent.stringParameter = expressions[j].Value<string>();
                                     animations[i].AddEvent(faceSwapEvent);
-                                }                                
+                                }
                             }
                         }
                     }

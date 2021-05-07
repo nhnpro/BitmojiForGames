@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.snap.project">
     <application>
-        <meta-data android:name="com.snapchat.kit.sdk.clientId" android:value="1f659441-bb42-4a9b-b0cf-66707481f5dc"/>
+        <meta-data android:name="com.snapchat.kit.sdk.clientId" android:value="e677e0dd-4b5c-47de-9718-4fde483d1cdb"/>
         <meta-data android:name="com.snapchat.kit.sdk.redirectUrl" android:value="unitytest://snap-kit/oauth2"/>
         <meta-data android:name="com.snapchat.kit.sdk.scopes" android:resource="@array/snap_connect_scopes"/>
         <provider android:authorities="${applicationId}.fileprovider"
