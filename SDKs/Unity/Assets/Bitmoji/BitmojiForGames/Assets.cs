@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -167,6 +168,38 @@ namespace Bitmoji.BitmojiForGames
             return importedObject;
         }
 
+        private static void InstantiateGlbAsync(in byte[] glbBytes, LevelOfDetail levelOfDetail, Action<GameObject> onFinish, GameObject parentObject = null)
+        {
+            GLTFUtility.ImportSettings importSettings = new GLTFUtility.ImportSettings();
+
+            importSettings.extrasProcessor = new BFGExtrasProcessor();
+
+            GLTFUtility.Importer.ImportGLBAsync(glbBytes, importSettings, (importedObject, importedAnimationClips) => {
+                if (levelOfDetail == LevelOfDetail.LOD3)
+                {
+                    Transform glassesTransform = importedObject.transform.Find(LOD3_GLASSES_PATH);
+                    if (glassesTransform != null)
+                    {
+                        GameObject glassesObject = glassesTransform.gameObject;
+                        SkinnedMeshRenderer skinnedMeshRenderer = glassesObject.GetComponent<SkinnedMeshRenderer>();
+                        if (skinnedMeshRenderer != null)
+                        {
+                            skinnedMeshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                        }
+                    }
+                }
+
+                if (parentObject != null)
+                {
+                    importedObject.transform.parent = parentObject.transform;
+                }
+
+                if (onFinish != null) {
+                    onFinish(importedObject);
+                }
+            });
+        }
+
         private static AnimationClip InstantiateGlbAnimation(in byte[] glbBytes, in LevelOfDetail levelOfDetail, in bool useLegacyClips)
         {
             GLTFUtility.ImportSettings importSettings = new GLTFUtility.ImportSettings();
@@ -223,6 +256,20 @@ namespace Bitmoji.BitmojiForGames
                 avatarBytes = File.ReadAllBytes(avatarFilePath);
             }
             return InstantiateGlb(avatarBytes, levelOfDetail, parentObject);
+        }
+
+        public static void AddAvatarToSceneFromFileAsync(string avatarFilePath, LevelOfDetail levelOfDetail, Action<GameObject> onFinish, bool isResourcePath = false, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
+        {
+            byte[] avatarBytes = null;
+            if (isResourcePath)
+            {
+                avatarBytes = GetBytesFromResourcePath(avatarFilePath);
+            }
+            else
+            {
+                avatarBytes = File.ReadAllBytes(avatarFilePath);
+            }
+            InstantiateGlbAsync(avatarBytes, levelOfDetail, onFinish, parentObject);
         }
 
         public static async Task<GameObject> AddDefaultAvatarToScene(LevelOfDetail levelOfDetail, GameObject parentObject = null, Dictionary<string, string> additionalParameters = null)
