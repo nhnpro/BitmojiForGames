@@ -11,6 +11,6 @@
 
 Copyright © 2019-2020 Snap Inc. All rights reserved. All information subject to change without notice.
 
-[Snap Developer Terms of Service](https://kit.snapchat.com/portal/eula?viewOnly=true)
+[Snap Developer Terms of Service](https://www.snap.com/en-US/terms/developer)
 
 [Snap Inc. Terms of Service](https://www.bitmoji.com/support/terms.html)
