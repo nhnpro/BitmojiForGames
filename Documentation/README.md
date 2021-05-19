@@ -9,7 +9,7 @@
 1. [Animation Toolset](AnimationToolset/README.md)
 1. [Usage Guidelines](UsageGuidelines/README.md)
 
-Copyright © 2019-2020 Snap Inc. All rights reserved. All information subject to change without notice.
+Copyright © 2019-2021 Snap Inc. All rights reserved. All information subject to change without notice.
 
 [Snap Developer Terms of Service](https://www.snap.com/en-US/terms/developer)
 
