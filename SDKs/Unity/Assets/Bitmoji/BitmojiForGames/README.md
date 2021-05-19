@@ -7,6 +7,8 @@ NOTE: This plug-in depends on the [Snap Kit plug-in for Unity](https://assetstor
 
 If you decide you want to have users' personalized avatars, you need authentication and permission from the Bitmoji group. To obtain permission, please send your non-confidential Snap Kit client ID to games@bitmoji.com. See [here](https://github.com/Bitmoji/BitmojiForGames/tree/master/Documentation/DeveloperGuide#step-3---access-bitmoji-avatars) for more information.
 
+NOTE: There is a known bug affecting some users where avatar downloads from the API fail due to improper credentials. We are looking into it and will update the SDK as needed.
+
 Assets
 ------
 ### <a id="level-of-detail">__Level of Detail__</a>
